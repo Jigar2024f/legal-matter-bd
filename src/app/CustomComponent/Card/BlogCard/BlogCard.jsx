@@ -1,0 +1,66 @@
+import Image from "next/image";
+import Description from "../../Ui/Description/Description";
+import { FaArrowRight } from "react-icons/fa";
+import Link from "next/link";
+
+export default function BlogCard({ blog }) {
+  const { id, title, image, description } = blog || {};
+  return (
+    <div className="flex flex-col sm:flex-row lg:flex-col 2xl:flex-row justify-center gap-3 noto-serif-bengali-font">
+      <figure className="sm:w-2/5 h-52 lg:w-full 2xl:w-1/3 sm:max-h-60 lg:h-80">
+        <Image
+          src={image}
+          height={730}
+          width={505}
+          alt={title?.bn}
+          className="h-full w-full object-cover object-top md:object-cover"
+          priority
+        />
+      </figure>
+      <div className="flex-1 flex flex-col">
+        <h1 className="text-lg lg:text-xl mb-1 lg:mb-2 2xl:mb-3 font-medium">
+          <span className="sm:hidden lg:block 2xl:hidden" >  
+            {title?.bn?.length > 42
+              ? `${title?.bn?.slice(0, 42)}...`
+              : title?.bn}
+          </span>
+          <span className="hidden sm:block lg:hidden">
+            {title?.bn?.length > 48
+              ? `${title?.bn?.slice(0, 48)}...`
+              : title?.bn}
+          </span>
+          <span className="hidden 2xl:block">
+            {title?.bn?.length > 35
+              ? `${title?.bn?.slice(0, 35)}...`
+              : title?.bn}
+          </span>
+        </h1>
+        <p className="text-sm lg:text-base text-[#6B7280] text-justify flex-1">
+          <span className="sm:hidden lg:block 2xl:hidden">
+            {description?.bn?.length > 200
+              ? `${description?.bn?.slice(0, 200)}...`
+              : description?.bn}
+          </span>
+          <span className="hidden sm:block lg:hidden">
+            {description?.bn?.length > 380
+              ? `${description?.bn?.slice(0, 380)}...`
+              : description?.bn}
+          </span>
+          <span className="hidden 2xl:block">
+            {description?.bn?.length > 290
+              ? `${description?.bn?.slice(0, 290)}...`
+              : description?.bn}
+          </span>
+        </p>
+
+        <div className="">
+          <Link href={`/blogs/${id}`}>
+            <button className="mt-4 text-xs sm:text-sm px-4 py-1 border border-primary rounded-full flex justify-center items-center gap-1 hover:scale-105 transition-transform duration-500 ease-in-out">
+              আরও পড়ুন <FaArrowRight className="text-xs -rotate-45" />
+            </button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
