@@ -39,7 +39,7 @@ export default function Contact() {
           <address className="not-italic">
             <p>Bar Hall No 03,</p>
             <p>1st floor Hall Room,</p>
-            <p>Judge's Court, Sylhet</p>
+            <p>Judge&#39;s Court, Sylhet</p>
           </address>
         </article>
         {/* Office Address */}

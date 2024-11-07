@@ -16,7 +16,7 @@ export function ServicesTab({ service }) {
       </div>
       <TabsContent value="English">
         <section className="my-12 sm:my-14 lg:my-16 2xl:my-20 px-[5%] xl:px-0">
-          <figure className="h-52 sm:h-80 lg:h-[500px] my-12 sm:my-14 lg:my-16 2xl:my-20">
+          <figure className="h-52 sm:h-80 lg:h-[500px] my-12 ">
             <Image
               src={image}
               height={730}
@@ -29,7 +29,7 @@ export function ServicesTab({ service }) {
           <h1 className="text-[28px] sm:text-4xl lg:text-5xl 2xl:text-6xl font-extrabold md:leading-tight">
             {title?.en}
           </h1>
-          <div className=" my-2 sm:my-4 lg:my-6 2xl:my-8">
+          <div className=" my-2 sm:my-4 lg:my-6">
             <p
               className="text-sm sm:text-base lg:text-lg 2xl:text-xl text-justify"
               dangerouslySetInnerHTML={{ __html: description?.en }}
@@ -51,7 +51,7 @@ export function ServicesTab({ service }) {
       </TabsContent>
       <TabsContent value="Bangla">
         <section className=" my-12 sm:my-14 lg:my-16 2xl:my-20 px-[5%] xl:px-0 noto-serif-bengali-font">
-          <figure className="h-52 sm:h-80 lg:h-[500px]  my-12 sm:my-14 lg:my-16 2xl:my-20">
+          <figure className="h-52 sm:h-80 lg:h-[500px]  my-12 sm:my-14 ">
             <Image
               src={image}
               height={730}
@@ -64,7 +64,7 @@ export function ServicesTab({ service }) {
           <h1 className="text-[28px] sm:text-4xl lg:text-5xl 2xl:text-6xl font-extrabold md:leading-tight ">
             {title?.bn}
           </h1>
-          <div className=" my-2 sm:my-4 lg:my-6 2xl:my-8">
+          <div className=" my-2 sm:my-4 lg:my-6 ">
             <p
               className="text-sm sm:text-base lg:text-lg 2xl:text-xl text-justify"
               dangerouslySetInnerHTML={{ __html: description?.bn }}

@@ -17,18 +17,18 @@ export function BlogTab({ blog }) {
   console.log(blog);
   return (
     <Tabs defaultValue="Bangla" className="">
-      <div className="flex justify-center my-12 sm:my-14 lg:my-16 2xl:my-20">
+      <div className="flex justify-center my-12 sm:my-14 ">
         <TabsList className="grid grid-cols-2 w-fit">
           <TabsTrigger value="Bangla">Bangla</TabsTrigger>
           <TabsTrigger value="English">English</TabsTrigger>
         </TabsList>
       </div>
       <TabsContent value="English">
-        <section className="my-12 sm:my-14 lg:my-16 2xl:my-20">
+        <section className="my-12 sm:my-14 ">
           <h1 className="text-xl sm:text-3xl lg:text-4xl 2xl:text-4xl font-extrabold leading-[30px] md:leading-tight">
             {title_english}
           </h1>
-          <div className="flex gap-10 flex-wrap my-2 sm:my-4 lg:my-6 2xl:my-8">
+          <div className="flex gap-10 flex-wrap my-2 sm:my-4">
             <Description>
               <span className="text-[#6B7280]">Category: </span>
               {category_english}
@@ -55,7 +55,7 @@ export function BlogTab({ blog }) {
           <h1 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-4xl font-extrabold leading-[22px] md:leading-tight">
             {title_bangla}
           </h1>
-          <div className="flex gap-10 flex-wrap my-2 sm:my-4 lg:my-6 2xl:my-8">
+          <div className="flex gap-10 flex-wrap my-2 sm:my-4 ">
             <Description>
               <span className="text-[#6B7280]">বিভাগ: </span>
               {category_bangla}
