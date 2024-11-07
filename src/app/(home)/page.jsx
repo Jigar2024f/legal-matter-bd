@@ -4,26 +4,35 @@ import Contact from "../CustomComponent/Home/Contact/Contact";
 import OurAssociateMembers from "../CustomComponent/Home/OurAssociateMembers/OurAssociateMembers";
 import OurBlogs from "../CustomComponent/Home/OurBlogs/OurBlogs";
 import OurServices from "../CustomComponent/Home/OurServices/OurServices";
-import OurTeam from "../CustomComponent/Home/Team/OurTeam";
-import YourJustice from "../CustomComponent/Home/YourJustice/YourJustice";
-
 
 export default function Home() {
-
   return (
-    <main>
+    <main className="overflow-hidden">
+      {/* Hero Banner Section */}
       <Banner />
+
+      {/* About Section */}
       <section id="about">
         <AboutUs />
       </section>
+
+      {/* Services Section */}
       <section id="services">
         <OurServices />
       </section>
-      <OurAssociateMembers />
-      {/* <OurTeam /> */}
-      {/* <YourJustice /> */}
-      <OurBlogs />
-      <section id="contact">
+
+      {/* Associate Members Section */}
+      <section>
+        <OurAssociateMembers />
+      </section>
+
+      {/* Blogs Section */}
+      <section>
+        <OurBlogs />
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" >
         <Contact />
       </section>
     </main>

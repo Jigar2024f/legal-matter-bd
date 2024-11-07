@@ -13,16 +13,17 @@ export default function Banner() {
   };
 
   return (
-    <section className="my-6 sm:my-7 lg:my-8 2xl:my-10">
-      <div className="  mx-[5%]">
+    <section className="">
+      <div className="mx-[5%]">
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 justify-between items-center gap-5 lg:gap-8">
-          <h1 className="text-5xl sm:text-6xl lg:text-6xl 2xl:text-7xl font-extrabold md:leading-tight">
-            Your Problem,
-            <br className="hidden lg:block" />
-            The <span className="text-secondary">headache </span>
-            <br className="hidden lg:block" />
-            of solving it <br className="hidden sm:block" /> is ours
-          </h1>
+          <header>
+            <h1 className="text-5xl sm:text-6xl lg:text-6xl 2xl:text-7xl font-extrabold mt-7 lg:mt-10">
+              Your Problem, The{" "}
+              <span className="text-secondary">headache </span>
+              <br className="hidden " />
+              of solving it is ours
+            </h1>
+          </header>
           <div>
             <Description>
               Legal Matter BD is here to help you with your legal issues. Our
@@ -40,20 +41,23 @@ export default function Banner() {
         </div>
       </div>
       {/* Image Section */}
-      <figure className="max-w-screen-xl mx-auto mt-6 sm:mt-8 lg:mt-10 2xl:mt-16 sm:px-[5%] px-[5%]">
-        <Image
-          src="/images/home/banner.png"
-          height={626}
-          width={638}
-          alt="Home page banner image"
-          className="h-full w-full object-cover object-center rounded sm:rounded-lg"
-          priority
-        />
-      </figure>
-      <div className="space-y-5 sm:space-y-12 lg:space-y-16 -mt-28 sm:-mt-52 lg:-mt-64 2xl:-mt-[300px] mb-28 sm:mb-52 lg:mb-64 2xl:mb-[300px]">
-        <div className="border bg-[#C4C4C4] h-[2px]" />
-        <div className="border bg-[#C4C4C4] h-[2px]" />
-        <div className="border bg-[#C4C4C4] h-[2px]" />
+      <div className="relative">
+        <figure className="max-w-screen-xl mx-auto mt-6 sm:mt-8 lg:mt-10 2xl:mt-16 sm:px-[10%] 2xl:px-[5%] px-[5%]">
+          <Image
+            src="/images/home/banner.png"
+            height={626}
+            width={638}
+            alt="Home page banner image"
+            className="h-full w-full relative z-20 object-cover object-top rounded sm:rounded-lg"
+            priority
+          />
+        </figure>
+        {/* Centered Full-Width Lines */}
+        <div className="space-y-5 sm:space-y-12 lg:space-y-16 absolute inset-x-0 top-20 md:top-32 lg:top-52 w-full ">
+          <div className="border bg-[#C4C4C4] h-[2px]" aria-hidden="true" />
+          <div className="border bg-[#C4C4C4] h-[2px]" aria-hidden="true" />
+          <div className="border bg-[#C4C4C4] h-[2px]" aria-hidden="true" />
+        </div>
       </div>
     </section>
   );

@@ -29,14 +29,14 @@ const Carousel = React.forwardRef(
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [carouselRef, api] = useEmblaCarousel(
       {
         ...opts,
         axis: orientation === "horizontal" ? "x" : "y",
       },
-      plugins
+      plugins,
     );
     const [canScrollPrev, setCanScrollPrev] = React.useState(false);
     const [canScrollNext, setCanScrollNext] = React.useState(false);
@@ -68,7 +68,7 @@ const Carousel = React.forwardRef(
           scrollNext();
         }
       },
-      [scrollPrev, scrollNext]
+      [scrollPrev, scrollNext],
     );
 
     React.useEffect(() => {
@@ -119,7 +119,7 @@ const Carousel = React.forwardRef(
         </div>
       </CarouselContext.Provider>
     );
-  }
+  },
 );
 Carousel.displayName = "Carousel";
 
@@ -133,7 +133,7 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
         className={cn(
           "flex",
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
-          className
+          className,
         )}
         {...props}
       />
@@ -153,7 +153,7 @@ const CarouselItem = React.forwardRef(({ className, ...props }, ref) => {
       className={cn(
         "min-w-0 shrink-0 grow-0 basis-full",
         orientation === "horizontal" ? "pl-4" : "pt-4",
-        className
+        className,
       )}
       {...props}
     />
@@ -172,11 +172,11 @@ const CarouselPrevious = React.forwardRef(
           variant={variant}
           size={size}
           className={cn(
-            "absolute h-14 w-14 rounded-full text-white bg-[#4F41B6] border-[2.5px] border-white hover:bg-transparent hover:text-white z-50",
+            "absolute h-14 w-14 rounded-full text-white bg-[#4F41B6] border-[2.5px] border-white hover:bg-transparent hover:text-white z-50 ",
             orientation === "horizontal"
               ? "left-[10%] top-1/2 -translate-y-1/2 "
               : "-top-4 left-1/2 -translate-x-1/2 rotate-90",
-            className
+            className,
           )}
           disabled={!canScrollPrev}
           onClick={scrollPrev}
@@ -187,7 +187,7 @@ const CarouselPrevious = React.forwardRef(
         </Button>
       </div>
     );
-  }
+  },
 );
 CarouselPrevious.displayName = "CarouselPrevious";
 
@@ -206,7 +206,7 @@ const CarouselNext = React.forwardRef(
             orientation === "horizontal"
               ? "right-[10%] top-1/2 -translate-y-1/2"
               : "-bottom-4 left-1/2 -translate-x-1/2 rotate-90",
-            className
+            className,
           )}
           disabled={!canScrollNext}
           onClick={scrollNext}
@@ -217,7 +217,7 @@ const CarouselNext = React.forwardRef(
         </Button>
       </div>
     );
-  }
+  },
 );
 CarouselNext.displayName = "CarouselNext";
 
@@ -235,7 +235,7 @@ const FitnessCarouselPrevious = React.forwardRef(
           orientation === "horizontal"
             ? "right-9 sm:right-20 -top-10 sm:-top-14 -translate-y-1/2 "
             : "-top-4 left-1/2 -translate-x-1/2 rotate-90",
-          className
+          className,
         )}
         disabled={!canScrollPrev}
         onClick={scrollPrev}
@@ -245,7 +245,7 @@ const FitnessCarouselPrevious = React.forwardRef(
         <span className="sr-only">Previous slide</span>
       </Button>
     );
-  }
+  },
 );
 FitnessCarouselPrevious.displayName = "FitnessCarouselPrevious";
 
@@ -263,7 +263,7 @@ const FitnessCarouselNext = React.forwardRef(
           orientation === "horizontal"
             ? "right-0 -top-10 sm:-top-14 -translate-y-1/2"
             : "-bottom-4 left-1/2 -translate-x-1/2 rotate-90",
-          className
+          className,
         )}
         disabled={!canScrollNext}
         onClick={scrollNext}
@@ -273,7 +273,7 @@ const FitnessCarouselNext = React.forwardRef(
         <span className="sr-only">Next slide</span>
       </Button>
     );
-  }
+  },
 );
 FitnessCarouselNext.displayName = "CarouselNext";
 

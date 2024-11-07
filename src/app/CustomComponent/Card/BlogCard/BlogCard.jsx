@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Description from "../../Ui/Description/Description";
 import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 
@@ -7,7 +6,7 @@ export default function BlogCard({ blog }) {
   const { _id, image, description_bangla, title_bangla } = blog || {};
 
   return (
-    <div className="flex flex-col sm:flex-row lg:flex-flex justify-center gap-3 noto-serif-bengali-font">
+    <div className="flex flex-col sm:flex-row lg:flex-flex justify-center gap-6 noto-serif-bengali-font">
       <figure className="sm:w-2/5 h-52 lg:w-1/2 2xl:w-1/3 sm:max-h-60 lg:h-80">
         <Image
           src={image}
@@ -68,7 +67,7 @@ export default function BlogCard({ blog }) {
           ></span>
         </p>
 
-        <div className="">
+        <div>
           <Link href={`/blogs/${_id}`}>
             <button className="mt-4 text-xs sm:text-sm px-4 py-1 border border-primary rounded-full flex justify-center items-center gap-1 hover:bg-primary hover:text-white transition-transform duration-500 ease-in-out">
               আরও পড়ুন <FaArrowRight className="text-xs -rotate-45" />

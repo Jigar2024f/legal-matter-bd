@@ -2,44 +2,54 @@ import Image from "next/image";
 import Heading from "../../Ui/Heading/Heading";
 import SubHeading from "../../Ui/SubHeading/SubHeading";
 
-export default function OurAssociateMembers(params) {
+export default function OurAssociateMembers() {
   return (
-    <section className="relative bg-black text-white my-12 sm:my-14 lg:my-20 2xl:my-40 px-[5%] py-5">
-      <div className="absolute bg-white -bottom-1  lg:top-0 h-1/2 sm:h-3/4 lg:h-full w-full lg:w-1/2 2xl:w-1/3 z-10 right-0 "></div>
-      <div className="relative max-w-screen-xl mx-auto flex flex-col lg:flex-row w-full">
-        <div className="lg:w-2/5 2xl:w-3/5 my-auto">
-          <h2 className="text-base sm:text-lg lg:text-xl 2xl:text-2xl mb-1 lg:mb-2 ">
-            We Are Here For You
-          </h2>
+    <section className="relative bg-gradient-to-r from-black via-gray-900 to-black text-white py-16 px-[5%] my-12 sm:my-14 lg:my-16 2xl:my-20 overflow-hidden">
+      {/* Background Decorative Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-70 pointer-events-none"></div>
+
+      {/* Content Container */}
+      <div className="relative max-w-screen-xl mx-auto flex flex-col lg:flex-row  gap-8 lg:gap-16 z-20">
+        {/* Left Section: Title and Subtitle */}
+        <div className="lg:w-2/5 sm:text-center lg:text-left">
+          <SubHeading>
+            <span className="text-white">Who We Are</span>
+          </SubHeading>
           <Heading>
-            <span className="text-[#ffffff2f]"> Our</span> Associate Members
+            <span className="text-opacity-40 text-white">Our</span> Associate
+            Members
           </Heading>
         </div>
-        <div className="lg:w-1/2 2xl:w-2/5 flex flex-col sm:flex-row gap-0 sm:gap-5 sm:items-center relative z-20 ">
-          <div className="my-5 lg:-my-10 2xl:-my-20">
-            <div className="w-full h-fit lg:h-[350px] 2xl:h-[400px] sm:w-fit">
-              <Image
-                src="/images/home/our-associate-members.png"
-                height={730}
-                width={505}
-                alt="our Associate Members"
-                className="lg:h-full lg:w-fit border-2 border-black"
-                priority
-              />
-            </div>
+
+        {/* Right Section: Member Profile Card */}
+        <div className="lg:w-3/5 flex flex-col lg:flex-row  gap-6 lg:gap-10 bg-white bg-opacity-5 backdrop-blur-md p-5 md:p-8 rounded-lg shadow-xl  transition-shadow duration-300 ease-in-out transform ">
+          {/* Image Container */}
+          <div className="w-full lg:w-1/2 overflow-hidden shadow-lg transform transition-transform duration-500 ease-in-out">
+            <Image
+              src="/images/home/our-associate-members.png"
+              height={730}
+              width={505}
+              alt="Associate Member"
+              className="object-cover w-full h-full rounded-lg"
+              priority
+            />
           </div>
-          <div className="text-[#6B7280]">
-            <h1 className="text-primary font-semibold text-xl mb-1">
+
+          {/* Information Section */}
+          <div className="text-gray-200 ">
+            <h1 className=" font-semibold text-2xl sm:text-4xl lg:text-2xl  mb-3">
               Syed Jigar Saad Alam
             </h1>
-            <p>LL.B (Hon&#39;s)</p>
-            <p>LL.M (Master’s)</p>
-            <p>Sylhet International University.</p>
-            <p>Advocate</p>
-            <p>Judge&#39;s Court, Sylhet.</p>
-            <p>Apprentice,</p>
-            <p>Supreme Court Of Bangladesh,</p>
-            <p>High Court Division.</p>
+            <div className="space-y-1  sm:text-2xl lg:text-base">
+              <p>LL.B (Hon&#39;s)</p>
+              <p>LL.M (Master’s)</p>
+              <p>Sylhet International University</p>
+              <p>Advocate</p>
+              <p>Judge&#39;s Court, Sylhet</p>
+              <p>Apprentice</p>
+              <p>Supreme Court of Bangladesh</p>
+              <p>High Court Division</p>
+            </div>
           </div>
         </div>
       </div>

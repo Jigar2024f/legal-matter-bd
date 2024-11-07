@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 const InputForm = () => {
-  const { toast } = useToast()
+  const { toast } = useToast();
   const {
     register,
     handleSubmit,
@@ -39,7 +39,7 @@ const InputForm = () => {
         "service_2d5r8tc", // Replace with your EmailJS service ID
         "template_wfsfmfe", // Replace with your EmailJS template ID
         emailParams,
-        "17t-dE5VI-FC-Fspc" // Replace with your EmailJS public key
+        "17t-dE5VI-FC-Fspc", // Replace with your EmailJS public key
       )
       .then(() => {
         toast({
@@ -58,7 +58,6 @@ const InputForm = () => {
       });
   };
 
-
   return (
     <section className="relative">
       <div className="space-y-24 sm:space-y-12 lg:space-y-16 absolute top-1/3 w-full z-10 sm:mt-8">
@@ -71,9 +70,12 @@ const InputForm = () => {
           <form
             className="text-start flex flex-col gap-5"
             onSubmit={handleSubmit(onSubmit)}
+            aria-labelledby="form-heading"
           >
+            <h1 id="form-heading" className="sr-only">
+              Contact Form
+            </h1>
             {/* Form Fields */}
-            {/* Name Fields */}
             <div className="flex flex-col sm:flex-row gap-5">
               <div className="grid w-full items-center gap-1.5">
                 <Label htmlFor="firstName">First Name</Label>
@@ -168,7 +170,7 @@ const InputForm = () => {
               )}
             </div>
 
-            {/* Terms Checkbox and Submit Button */}
+            {/* Submit Button */}
             <div className="flex flex-col sm:flex-row items-start justify-end sm:items-center gap-5 mt-5">
               <button
                 type="submit"

@@ -1,5 +1,4 @@
-"use client"; // Required for Next.js App Router
-
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
@@ -37,12 +36,12 @@ export default function Navbar() {
     return () => document.body.classList.remove("overflow-hidden");
   }, [isMenuOpen]);
 
-
   if (pathname === "/dashboard") {
     return null;
   }
+
   return (
-    <div className="relative w-full z-50 sm:px-[5%] sm:py-8">
+    <div className="relative w-full z-50 sm:px-[5%] sm:py-4">
       <div className="max-w-screen-xl mx-auto container">
         <div className="relative hidden md:flex justify-between items-center overflow-x-hidden">
           <div className="flex justify-center items-center gap-3">
@@ -62,40 +61,26 @@ export default function Navbar() {
 
           <nav className="py-4 px-6 ubuntu-font">
             <ul className="flex space-x-8">
-              <li>
-                <Link href="/" className="relative pb-2 hover:text-secondary text-xl">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNavigation("about")}
-                  className="cursor-pointer relative pb-2 hover:text-secondary text-xl"
-                >
-                  About
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNavigation("services")}
-                  className="cursor-pointer relative pb-2 hover:text-gray-300 text-xl"
-                >
-                  Services
-                </button>
-              </li>
-              <li>
-                <Link href="/blogs" className="relative pb-2 hover:text-gray-300 text-xl">
-                  Blogs
-                </Link>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNavigation("contact")}
-                  className="cursor-pointer relative pb-2 hover:text-gray-300 text-xl"
-                >
-                  Contact
-                </button>
-              </li>
+              {["Home", "About", "Services", "Blogs", "Contact"].map(
+                (item, index) => (
+                  <li key={index} className="group relative pb-2 text-xl">
+                    {item === "Blogs" ? (
+                      <Link href="/blogs">
+                        <span className="hover:text-[#000000] transition duration-300 relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-[#000000] after:transition-all after:duration-300 after:hover:w-full">
+                          {item}
+                        </span>
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={() => handleNavigation(item.toLowerCase())}
+                        className="cursor-pointer hover:text-[#000000] transition duration-300 relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-[#000000] after:transition-all after:duration-300 after:group-hover:w-full"
+                      >
+                        {item}
+                      </button>
+                    )}
+                  </li>
+                ),
+              )}
             </ul>
           </nav>
         </div>
@@ -112,47 +97,59 @@ export default function Navbar() {
             />
           </Link>
 
-          <button className="text-3xl p-1.5 focus:outline-none" onClick={toggleMenu}>
+          <button
+            className="text-3xl p-1.5 focus:outline-none"
+            onClick={toggleMenu}
+          >
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
 
         {isMenuOpen && (
-          <div onClick={() => setIsMenuOpen(false)} className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-500 mt-24 z-0"></div>
+          <div
+            onClick={() => setIsMenuOpen(false)}
+            className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-500 mt-24 z-0"
+          ></div>
         )}
 
         <div className="md:hidden relative">
           <nav
             className={`${
-              isMenuOpen ? "translate-y-0 opacity-100 shadow-md" : "-translate-y-full opacity-100"
+              isMenuOpen
+                ? "translate-y-0 opacity-100 shadow-md"
+                : "-translate-y-full opacity-100"
             } transform transition-all duration-500 ease-in-out overflow-hidden absolute top-0 w-full bg-lightGray py-6 border-t border-gray-200 z-10`}
           >
             <ul className="flex flex-col items-center text-center space-y-3">
-              {[{ name: "Home", href: "/" }, { name: "About", id: "about" }, { name: "Services", id: "services" }, { name: "Blogs", href: "/blogs" }, { name: "Contact", id: "contact" }].map(
-                (item, index) => (
-                  <li key={index} className="w-full">
-                    {item.href ? (
-                      <Link
-                        className="text-lg font-medium text-gray-700 hover:text-secondary hover:underline"
-                        href={item.href}
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    ) : (
-                      <button
-                        onClick={() => {
-                          handleNavigation(item.id);
-                          setIsMenuOpen(false);
-                        }}
-                        className="text-lg font-medium text-gray-700 hover:text-secondary hover:underline w-full"
-                      >
-                        {item.name}
-                      </button>
-                    )}
-                  </li>
-                )
-              )}
+              {[
+                { name: "Home", href: "/" },
+                { name: "About", id: "about" },
+                { name: "Services", id: "services" },
+                { name: "Blogs", href: "/blogs" },
+                { name: "Contact", id: "contact" },
+              ].map((item, index) => (
+                <li key={index} className="w-full">
+                  {item.href ? (
+                    <Link
+                      className="text-lg font-medium text-gray-700 hover:text-secondary hover:underline"
+                      href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        handleNavigation(item.id);
+                        setIsMenuOpen(false);
+                      }}
+                      className="text-lg font-medium text-gray-700 hover:text-secondary hover:underline w-full"
+                    >
+                      {item.name}
+                    </button>
+                  )}
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
