@@ -6,8 +6,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { servicesData } from "../../../../../../public/data/services";
 import QuillEditor from "../../Component/QuillEditor";
-// import QuillEditor from "./QuillEditor"; // Import the QuillEditor component
-
 const EditBlog = ({ params }) => {
   const services = servicesData;
   const { id } = params;
@@ -29,7 +27,7 @@ const EditBlog = ({ params }) => {
       if (id) {
         try {
           const response = await axios.get(
-            `https://legalmatterbd-server.vercel.app/api/v1/blog/${id}`,
+            ` https://ligalmatter.vercel.app/api/v1/blog/${id}`
           );
           if (response.data.success) {
             setFormData(response.data.data);
@@ -62,14 +60,18 @@ const EditBlog = ({ params }) => {
     const apiKey = "4c33fed168c7c87fe3c27db1cd78341b"; // ImgBB API key
 
     try {
-      const response =
-        "https://cdn.gobankingrates.com/wp-content/uploads/2019/01/Lowes-iStock-458677805.jpg";
-      //  await axios.post(
-      //   `https://api.imgbb.com/1/upload?expiration=600&key=${apiKey}`,
-      //   formData
-      // );
-      // return response.data.data.url; // Return image URL
-      return response; // Return image URL
+      const response = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${apiKey}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: false,
+        }
+      );
+
+      return response.data.data.display_url;
     } catch (error) {
       console.error("Error uploading image:", error);
       alert("An error occurred while uploading the image.");
@@ -96,11 +98,11 @@ const EditBlog = ({ params }) => {
 
     try {
       const response = await axios.put(
-        `https://legalmatterbd-server.vercel.app/api/v1/blog/${id}`,
+        ` https://ligalmatter.vercel.app/api/v1/blog/${id}`,
         updatedData,
         {
           withCredentials: true,
-        },
+        }
       );
       if (response.data.success) {
         toast.success("Blog updated successfully!");

@@ -86,7 +86,7 @@ const CreateBlog = () => {
 
     try {
       const response = await axios.post(
-        "https://legalmatterbd-server.vercel.app/api/v1/blog",
+        " https://ligalmatter.vercel.app/api/v1/blog",
         updatedFormData,
         {
           withCredentials: true,

@@ -38,7 +38,7 @@ export default function Page() {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          "https://legalmatterbd-server.vercel.app/api/v1/blog",
+          " https://ligalmatter.vercel.app/api/v1/blog"
         ); // Replace with your API endpoint
         console.log(response);
         if (response.data.success) {

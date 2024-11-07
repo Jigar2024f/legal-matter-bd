@@ -27,7 +27,7 @@ export default function OurBlogs() {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          "https://legalmatterbd-server.vercel.app/api/v1/blog",
+          " https://ligalmatter.vercel.app/api/v1/blog"
         );
         if (response.data.success) {
           setBlogs(response.data.data.slice(0, 5)); // Limit to 5 blogs

@@ -36,10 +36,10 @@ const GetBlog = () => {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          "https://legalmatterbd-server.vercel.app/api/v1/blog",
+          " https://ligalmatter.vercel.app/api/v1/blog",
           {
             withCredentials: true,
-          },
+          }
         );
 
         if (response.data.success) {
@@ -62,10 +62,10 @@ const GetBlog = () => {
     if (selectedBlog) {
       try {
         await axios.delete(
-          `https://legalmatterbd-server.vercel.app/api/v1/blog/${selectedBlog._id}`,
+          ` https://ligalmatter.vercel.app/api/v1/blog/${selectedBlog._id}`,
           {
             withCredentials: true,
-          },
+          }
         );
         setBlogs(blogs.filter((blog) => blog._id !== selectedBlog._id));
         setIsDialogOpen(false);

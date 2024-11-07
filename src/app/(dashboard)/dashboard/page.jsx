@@ -25,7 +25,6 @@ const CreateBlog = () => {
   const router = useRouter();
 
   useEffect(() => {
-    // Update formData whenever contentEnglish or contentBangla changes
     setFormData((prev) => ({
       ...prev,
       description_english: contentEnglish,
@@ -34,25 +33,31 @@ const CreateBlog = () => {
   }, [contentEnglish, contentBangla]);
 
   const handleImageUpload = async (imageFile) => {
+    console.log({ imageFile });
     const formData = new FormData();
     formData.append("image", imageFile);
-    const apiKey = "4c33fed168c7c87fe3c27db1cd78341b"; // ImgBB API key
+    const apiKey = "4c33fed168c7c87fe3c27db1cd78341b";
 
     try {
-      const response =
-        "https://cdn.gobankingrates.com/wp-content/uploads/2019/01/Lowes-iStock-458677805.jpg";
-      // await axios.post(
-      //   `https://api.imgbb.com/1/upload?expiration=600&key=${apiKey}`,
-      //   formData
-      // );
-      // return response.data.data.url; // Return image URL
-      return response; // Return image URL
+      const response = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${apiKey}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: false,
+        }
+      );
+      console.log({ response });
+      return response.data.data.display_url;
     } catch (error) {
       console.error("Error uploading image:", error);
       alert("An error occurred while uploading the image.");
       return null;
     }
   };
+
   // const handleImageUpload = async (imageFile) => {
   // const formData = new FormData();
   // formData.append("image", imageFile);
@@ -104,11 +109,11 @@ const CreateBlog = () => {
 
     try {
       const response = await axios.post(
-        "https://legalmatterbd-server.vercel.app/api/v1/blog",
+        " https://ligalmatter.vercel.app/api/v1/blog",
         updatedFormData,
         {
           withCredentials: true,
-        },
+        }
       );
       setLoading(false);
       if (response.data.success) {
@@ -122,8 +127,8 @@ const CreateBlog = () => {
           category_english: "",
           category_bangla: "",
         });
-        setContentEnglish(""); // Clear editor content
-        setContentBangla(""); // Clear editor content
+        setContentEnglish("");
+        setContentBangla("");
         router.push("/dashboard/all-blog");
       } else {
         toast.error("Failed to create blog: " + response.data.message);

@@ -8,7 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [loading, setLoading] = useState(false); // Loading state for button
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
@@ -20,15 +20,14 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://legalmatterbd-server.vercel.app/api/v1/auth/login",
+        "https://ligalmatter.vercel.app/api/v1/auth/login",
         {
           email,
           password,
         },
-        { withCredentials: true },
+        { withCredentials: true }
       );
 
-      // If login is successful, redirect or handle token as needed
       const { data } = response;
       console.log("Login successful", data);
       setSuccess(data.message);
