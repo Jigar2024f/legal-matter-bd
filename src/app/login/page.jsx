@@ -1,37 +1,41 @@
-"use client"
+"use client";
 import { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import { useRouter } from "next/navigation";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false); // Loading state for button
 
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
+    setError("");
+    setSuccess("");
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/auth/login', {
-        email,
-        password,
-      }, { withCredentials: true });
+      const response = await axios.post(
+        "https://legalmatterbd-server.vercel.app/api/v1/auth/login",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true },
+      );
 
       // If login is successful, redirect or handle token as needed
       const { data } = response;
-      console.log('Login successful', data);
+      console.log("Login successful", data);
       setSuccess(data.message);
-      router.push('/dashboard');
+      router.push("/dashboard");
     } catch (err) {
       console.error(err);
-      setError(err.response?.data?.message || 'Login failed');
+      setError(err.response?.data?.message || "Login failed");
     } finally {
       setLoading(false);
     }
@@ -44,7 +48,12 @@ const Login = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email
+            </label>
             <input
               type="email"
               name="email"
@@ -58,7 +67,12 @@ const Login = () => {
 
           {/* Password */}
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
             <input
               type="password"
               name="password"
@@ -82,7 +96,9 @@ const Login = () => {
 
         {/* Display success or error messages */}
         {error && <div className="mt-4 text-red-500 text-center">{error}</div>}
-        {success && <div className="mt-4 text-green-500 text-center">{success}</div>}
+        {success && (
+          <div className="mt-4 text-green-500 text-center">{success}</div>
+        )}
       </div>
     </section>
   );

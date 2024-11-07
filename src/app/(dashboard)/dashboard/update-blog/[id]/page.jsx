@@ -29,7 +29,7 @@ const EditBlog = ({ params }) => {
       if (id) {
         try {
           const response = await axios.get(
-            `http://localhost:5000/api/v1/blog/${id}`
+            `https://legalmatterbd-server.vercel.app/api/v1/blog/${id}`,
           );
           if (response.data.success) {
             setFormData(response.data.data);
@@ -62,7 +62,8 @@ const EditBlog = ({ params }) => {
     const apiKey = "4c33fed168c7c87fe3c27db1cd78341b"; // ImgBB API key
 
     try {
-      const response ="https://cdn.gobankingrates.com/wp-content/uploads/2019/01/Lowes-iStock-458677805.jpg";
+      const response =
+        "https://cdn.gobankingrates.com/wp-content/uploads/2019/01/Lowes-iStock-458677805.jpg";
       //  await axios.post(
       //   `https://api.imgbb.com/1/upload?expiration=600&key=${apiKey}`,
       //   formData
@@ -95,11 +96,11 @@ const EditBlog = ({ params }) => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/v1/blog/${id}`,
+        `https://legalmatterbd-server.vercel.app/api/v1/blog/${id}`,
         updatedData,
         {
           withCredentials: true,
-        }
+        },
       );
       if (response.data.success) {
         toast.success("Blog updated successfully!");
@@ -121,8 +122,7 @@ const EditBlog = ({ params }) => {
         <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
       </div>
     );
-  if (error)
-    return <div className="text-center text-red-500">{error}</div>;
+  if (error) return <div className="text-center text-red-500">{error}</div>;
 
   return (
     <section className="flex justify-center items-center bg-gray-100">
@@ -179,7 +179,9 @@ const EditBlog = ({ params }) => {
               type="file"
               name="image"
               accept="image/*"
-              onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
+              onChange={(e) =>
+                setFormData({ ...formData, image: e.target.files[0] })
+              }
               className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-primary focus:ring-primary"
             />
           </div>
@@ -194,7 +196,9 @@ const EditBlog = ({ params }) => {
             </label>
             <QuillEditor
               value={formData.description_english}
-              onChange={(value) => setFormData({ ...formData, description_english: value })}
+              onChange={(value) =>
+                setFormData({ ...formData, description_english: value })
+              }
             />
           </div>
 
@@ -208,7 +212,9 @@ const EditBlog = ({ params }) => {
             </label>
             <QuillEditor
               value={formData.description_bangla}
-              onChange={(value) => setFormData({ ...formData, description_bangla: value })}
+              onChange={(value) =>
+                setFormData({ ...formData, description_bangla: value })
+              }
             />
           </div>
 

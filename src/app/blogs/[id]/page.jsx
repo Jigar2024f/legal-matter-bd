@@ -3,7 +3,12 @@
 import { BreadcrumbSection } from "@/app/CustomComponent/BreadcrumbSection/BreadcrumbSection";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FaFacebook, FaInstagramSquare, FaLinkedin, FaTwitter } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagramSquare,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa";
 import Heading from "@/app/CustomComponent/Ui/Heading/Heading";
 import {
   Carousel,
@@ -32,12 +37,15 @@ export default function Page() {
     // Fetch blog data from the API
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/blog"); // Replace with your API endpoint
+        const response = await axios.get(
+          "https://legalmatterbd-server.vercel.app/api/v1/blog",
+        ); // Replace with your API endpoint
         console.log(response);
         if (response.data.success) {
           const allBlogs = response.data.data;
           const selectedBlog = allBlogs.find((b) => b._id === id); // Find the selected blog
-          const otherBlogs = allBlogs.filter((b) => b._id !== id) // Filter out the selected blog
+          const otherBlogs = allBlogs
+            .filter((b) => b._id !== id) // Filter out the selected blog
             .sort(() => 0.5 - Math.random()) // Shuffle the array
             .slice(0, 5); // Limit to 5 blogs
 

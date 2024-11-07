@@ -3,24 +3,44 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button"; 
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import { MdEdit, MdVisibility, MdDelete } from "react-icons/md"; // Import React icons
 
 const GetBlog = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedBlog, setSelectedBlog] = useState(null); 
-  const [isDialogOpen, setIsDialogOpen] = useState(false); 
+  const [selectedBlog, setSelectedBlog] = useState(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/blog", {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          "https://legalmatterbd-server.vercel.app/api/v1/blog",
+          {
+            withCredentials: true,
+          },
+        );
 
         if (response.data.success) {
           setBlogs(response.data.data);
@@ -41,24 +61,28 @@ const GetBlog = () => {
   const handleDelete = async () => {
     if (selectedBlog) {
       try {
-        await axios.delete(`http://localhost:5000/api/v1/blog/${selectedBlog._id}`, {
-          withCredentials: true,
-        });
+        await axios.delete(
+          `https://legalmatterbd-server.vercel.app/api/v1/blog/${selectedBlog._id}`,
+          {
+            withCredentials: true,
+          },
+        );
         setBlogs(blogs.filter((blog) => blog._id !== selectedBlog._id));
-        setIsDialogOpen(false); 
+        setIsDialogOpen(false);
       } catch (error) {
         console.error("Error deleting blog:", error);
         setError("Failed to delete blog. Please try again later.");
-        setIsDialogOpen(false); 
+        setIsDialogOpen(false);
       }
     }
   };
 
-  if (loading) return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
-    </div>
-  );
+  if (loading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+      </div>
+    );
 
   if (error) return <div className="text-center text-red-500">{error}</div>;
 
@@ -109,7 +133,10 @@ const GetBlog = () => {
                           <MdVisibility className="text-2xl" />
                         </button>
                       </Link>
-                      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                      <Dialog
+                        open={isDialogOpen}
+                        onOpenChange={setIsDialogOpen}
+                      >
                         <DialogTrigger>
                           <button
                             onClick={() => setSelectedBlog(blog)}
@@ -122,11 +149,15 @@ const GetBlog = () => {
                           <DialogHeader>
                             <DialogTitle>Confirm Deletion</DialogTitle>
                             <DialogDescription>
-                              Are you sure you want to delete this blog? This action cannot be undone.
+                              Are you sure you want to delete this blog? This
+                              action cannot be undone.
                             </DialogDescription>
                           </DialogHeader>
                           <DialogFooter>
-                            <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
+                            <Button
+                              variant="outline"
+                              onClick={() => setIsDialogOpen(false)}
+                            >
                               Cancel
                             </Button>
                             <Button

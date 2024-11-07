@@ -26,7 +26,9 @@ export default function Page() {
     // Fetch blogs data from API
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/blog"); // Replace with your API URL
+        const response = await axios.get(
+          "https://legalmatterbd-server.vercel.app/api/v1/blog",
+        ); // Replace with your API URL
         if (response.data.success) {
           setBlogs(response.data.data); // Assuming response.data.data contains blog data
         } else {
@@ -49,7 +51,7 @@ export default function Page() {
   // Get the blogs to be displayed on the current page
   const currentBlogs = blogs.slice(
     (currentPage - 1) * blogsPerPage,
-    currentPage * blogsPerPage
+    currentPage * blogsPerPage,
   );
 
   const handlePageChange = (page) => {

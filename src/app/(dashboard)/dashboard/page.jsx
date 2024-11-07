@@ -39,13 +39,14 @@ const CreateBlog = () => {
     const apiKey = "4c33fed168c7c87fe3c27db1cd78341b"; // ImgBB API key
 
     try {
-      const response = "https://cdn.gobankingrates.com/wp-content/uploads/2019/01/Lowes-iStock-458677805.jpg";
+      const response =
+        "https://cdn.gobankingrates.com/wp-content/uploads/2019/01/Lowes-iStock-458677805.jpg";
       // await axios.post(
       //   `https://api.imgbb.com/1/upload?expiration=600&key=${apiKey}`,
       //   formData
       // );
       // return response.data.data.url; // Return image URL
-      return response // Return image URL
+      return response; // Return image URL
     } catch (error) {
       console.error("Error uploading image:", error);
       alert("An error occurred while uploading the image.");
@@ -53,18 +54,18 @@ const CreateBlog = () => {
     }
   };
   // const handleImageUpload = async (imageFile) => {
-    // const formData = new FormData();
-    // formData.append("image", imageFile);
+  // const formData = new FormData();
+  // formData.append("image", imageFile);
 
-    // try {
-    //   const response =
-    //     "https://cdn.gobankingrates.com/wp-content/uploads/2019/01/Lowes-iStock-458677805.jpg";
-    //   return response;
-    // } catch (error) {
-    //   console.error("Image upload failed", error);
-    //   toast.error("Image upload failed. Please try again.");
-    //   return null;
-    // }
+  // try {
+  //   const response =
+  //     "https://cdn.gobankingrates.com/wp-content/uploads/2019/01/Lowes-iStock-458677805.jpg";
+  //   return response;
+  // } catch (error) {
+  //   console.error("Image upload failed", error);
+  //   toast.error("Image upload failed. Please try again.");
+  //   return null;
+  // }
   // };
 
   const handleChange = (e) => {
@@ -103,11 +104,11 @@ const CreateBlog = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/blog",
+        "https://legalmatterbd-server.vercel.app/api/v1/blog",
         updatedFormData,
         {
           withCredentials: true,
-        }
+        },
       );
       setLoading(false);
       if (response.data.success) {
@@ -122,7 +123,7 @@ const CreateBlog = () => {
           category_bangla: "",
         });
         setContentEnglish(""); // Clear editor content
-        setContentBangla("");  // Clear editor content
+        setContentBangla(""); // Clear editor content
         router.push("/dashboard/all-blog");
       } else {
         toast.error("Failed to create blog: " + response.data.message);
@@ -147,7 +148,10 @@ const CreateBlog = () => {
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="title_english" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="title_english"
+              className="block text-sm font-medium text-gray-700"
+            >
               Title (English)
             </label>
             <input
@@ -162,7 +166,10 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label htmlFor="title_bangla" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="title_bangla"
+              className="block text-sm font-medium text-gray-700"
+            >
               Title (Bangla)
             </label>
             <input
@@ -177,7 +184,10 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label htmlFor="image" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="image"
+              className="block text-sm font-medium text-gray-700"
+            >
               Upload Image
             </label>
             <input
@@ -190,16 +200,25 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label htmlFor="description_english" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="description_english"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Description (English)
             </label>
             <div className="mb-5">
-              <QuillEditor value={contentEnglish} onChange={setContentEnglish} />
+              <QuillEditor
+                value={contentEnglish}
+                onChange={setContentEnglish}
+              />
             </div>
           </div>
 
           <div>
-            <label htmlFor="description_bangla" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="description_bangla"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Description (Bangla)
             </label>
             <div className="mb-5">
@@ -208,7 +227,10 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label htmlFor="category_english" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="category_english"
+              className="block text-sm font-medium text-gray-700"
+            >
               Category (English)
             </label>
             <select
@@ -227,7 +249,10 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label htmlFor="category_bangla" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="category_bangla"
+              className="block text-sm font-medium text-gray-700"
+            >
               Category (Bangla)
             </label>
             <select

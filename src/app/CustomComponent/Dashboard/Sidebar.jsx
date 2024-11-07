@@ -83,8 +83,8 @@ export default function AdminDashboardSidebar({ children }) {
   const handleLogout = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/auth/logout",
-        { withCredentials: true }
+        "https://legalmatterbd-server.vercel.app/api/v1/auth/logout",
+        { withCredentials: true },
       );
 
       if (response.status === 200) {
