@@ -6,9 +6,9 @@ import Image from "next/image";
 
 export default function AboutUs(params) {
   return (
-    <section className="relative bg-primary text-white my-12 sm:my-14 lg:my-16 2xl:my-20 text-justify overflow-hidden">
+    <section className="relative bg-primary text-white my-12 sm:my-14 lg:my-16 2xl:my-20 text-justify overflow-hidden px-[5%]">
       {/* < div className="absolute top-10 -rotate-45 -left-[50%] sm:-left-[20%] lg:-left-[10%] 2xl:-left-[5%] z-10 h-10 w-[500px] bg-white bg-opacity-10"></> */}
-      <div className="max-w-screen-xl mx-auto px-[5%] py-10 sm:py-14 lg:py-18 2xl:py-24 flex flex-col sm:flex-row gap-5">
+      <div className="max-w-screen-xl mx-auto  py-10 sm:py-14 lg:py-18 2xl:py-24 flex flex-col sm:flex-row gap-5">
         <div className="sm:w-1/3 ">
           <div className="relative flex items-center gap-2 z-50">
             <SubHeading>
@@ -26,26 +26,31 @@ export default function AboutUs(params) {
             </figure>
           </div>
           <Heading>
-            About <span className="text-secondary">Us</span>
+            About <span className="text-opacity-20 text-white">Us</span>
           </Heading>
         </div>
         <div className="sm:w-2/3">
-          <Description>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.
-          </Description>
+          <p className="text-sm sm:text-base lg:text-lg 2xl:text-xl text-justify noto-serif-bengali-font">
+            লিগ্যাল ম্যাটার বিডি&#34; ল ফার্মে স্বাগতম। এখানে আপনি পাবেন অভিজ্ঞ ও
+            দক্ষ আইনজীবীদের কাছ থেকে যেকোনো আইনি বিষয়ে পরামর্শ। আপনি যদি
+            দেওয়ানি, ফৌজদারি, কোম্পানি নিবন্ধন, আয়কর অথবা অন্য কোনো আইনি সমস্যার
+            সমাধান খুঁজে থাকেন, তাহলে আমাদের &#34;লিগ্যাল ম্যাটার বিডি&#34; এর পেশাদার
+            টিম সবসময় আপনার পাশে আছে।
+            <br />
+            <br />
+            আমাদের আইনজীবীরা সিলেট জজ কোর্ট, সুনামগঞ্জ জজ কোর্ট, হবিগঞ্জ জজ
+            কোর্ট এবং ঢাকা জজ কোর্টে কাজ করেন। তারা সরাসরি মামলা পরিচালনা করে
+            এবং আপনাকে সঠিক আইনি সহায়তা দিয়ে থাকেন।
+            <br />
+            <br />
+            আমাদের আরও কিছু বিশেষ সেবা রয়েছে, যার মধ্যে ভূমি জরিপ, ইমিগ্রেশন
+            পরামর্শ, অভিজ্ঞ আর্কিটেক্ট ইঞ্জিনিয়ারের সহায়তা এবং অনলাইন ভূমি সেবা
+            অন্তর্ভুক্ত। এছাড়া, ই-পাসপোর্ট এবং ড্রাইভিং লাইসেন্স আবেদন সহ
+            বিভিন্ন অনলাইন সেবাও আমরা দিয়ে থাকি।
+            <br />
+            <br />
+            &#34;লিগ্যাল ম্যাটার বিডি&#34; আপনার আইনি ও ডিজিটাল সেবার নির্ভরযোগ্য সমাধান
+          </p>
         </div>
       </div>
     </section>

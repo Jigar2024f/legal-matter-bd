@@ -7,15 +7,15 @@ import Image from "next/image";
 export function ServicesTab({ service }) {
   const { title, image, description, options } = service || {};
   return (
-    <Tabs defaultValue="English" className="max-w-screen-xl mx-auto">
+    <Tabs defaultValue="Bangla" className="max-w-screen-lg mx-auto">
       <div className="flex justify-center my-12 sm:my-14 lg:my-16 2xl:my-20">
         <TabsList className="grid grid-cols-2 w-fit">
-          <TabsTrigger value="English">English</TabsTrigger>
           <TabsTrigger value="Bangla">Bangla</TabsTrigger>
+          <TabsTrigger value="English">English</TabsTrigger>
         </TabsList>
       </div>
       <TabsContent value="English">
-        <section className="my-12 sm:my-14 lg:my-16 2xl:my-20 px-[5%]">
+        <section className="my-12 sm:my-14 lg:my-16 2xl:my-20 px-[5%] xl:px-0">
           <figure className="h-52 sm:h-80 lg:h-[500px] my-12 sm:my-14 lg:my-16 2xl:my-20">
             <Image
               src={image}
@@ -26,22 +26,31 @@ export function ServicesTab({ service }) {
               priority
             />
           </figure>
-          <h1 className="text-[28px] sm:text-4xl lg:text-5xl 2xl:text-6xl font-extrabold md:leading-tight">{title?.en}</h1>
+          <h1 className="text-[28px] sm:text-4xl lg:text-5xl 2xl:text-6xl font-extrabold md:leading-tight">
+            {title?.en}
+          </h1>
           <div className=" my-2 sm:my-4 lg:my-6 2xl:my-8">
-            <Description>{description?.en}</Description>
+            <p
+              className="text-sm sm:text-base lg:text-lg 2xl:text-xl text-justify"
+              dangerouslySetInnerHTML={{ __html: description?.en }}
+            />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5">
             {options.map((option, index) => (
-              <div key={index} className="flex items-center gap-1">
-                <IoCheckbox className="bg-white text-primary text text-sm sm:text-base lg:text-lg 2xl:text-xl" />
-                <Description>{option.en}</Description>
+              <div key={index} className="flex items-start -mt-2 gap-1">
+                <div className="w-5 lg:w-8">
+                  <IoCheckbox className="bg-white text-primary text text-sm sm:text-base lg:text-lg 2xl:text-xl " />
+                </div>
+                <div className="flex-1">
+                  <Description>{option.en}</Description>
+                </div>
               </div>
             ))}
           </div>
         </section>
       </TabsContent>
       <TabsContent value="Bangla">
-        <section className=" my-12 sm:my-14 lg:my-16 2xl:my-20 px-[5%] noto-serif-bengali-font">
+        <section className=" my-12 sm:my-14 lg:my-16 2xl:my-20 px-[5%] xl:px-0 noto-serif-bengali-font">
           <figure className="h-52 sm:h-80 lg:h-[500px]  my-12 sm:my-14 lg:my-16 2xl:my-20">
             <Image
               src={image}
@@ -52,15 +61,24 @@ export function ServicesTab({ service }) {
               priority
             />
           </figure>
-          <h1 className="text-[28px] sm:text-4xl lg:text-5xl 2xl:text-6xl font-extrabold md:leading-tight ">{title?.bn}</h1>
+          <h1 className="text-[28px] sm:text-4xl lg:text-5xl 2xl:text-6xl font-extrabold md:leading-tight ">
+            {title?.bn}
+          </h1>
           <div className=" my-2 sm:my-4 lg:my-6 2xl:my-8">
-            <Description>{description?.bn}</Description>
+            <p
+              className="text-sm sm:text-base lg:text-lg 2xl:text-xl text-justify"
+              dangerouslySetInnerHTML={{ __html: description?.bn }}
+            />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5">
             {options.map((option, index) => (
-              <div key={index} className="flex items-center gap-1">
-                <IoCheckbox className="bg-white text-primary text text-sm sm:text-base lg:text-lg 2xl:text-xl" />
-                <Description>{option.bn}</Description>
+              <div key={index} className="flex items-start gap-1">
+                <div className="w-5 lg:w-8">
+                  <IoCheckbox className="bg-white text-primary text text-sm sm:text-base lg:text-lg 2xl:text-xl " />
+                </div>
+                <div className="flex-1">
+                  <Description>{option.bn}</Description>
+                </div>
               </div>
             ))}
           </div>

@@ -1,17 +1,9 @@
 "use client";
 
 import { BreadcrumbSection } from "@/app/CustomComponent/BreadcrumbSection/BreadcrumbSection";
-
 import { useParams } from "next/navigation";
-import { allBlogs } from "../../../../public/data/blogs";
-import { BlogTab } from "./BlogTab";
-import {
-  FaFacebook,
-  FaInstagramSquare,
-  FaLinkedin,
-  FaTwitter,
-} from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { FaFacebook, FaInstagramSquare, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Heading from "@/app/CustomComponent/Ui/Heading/Heading";
 import {
   Carousel,
@@ -21,23 +13,49 @@ import {
   FitnessCarouselPrevious,
 } from "@/components/ui/carousel";
 import BlogCard from "@/app/CustomComponent/Card/BlogCard/BlogCard";
+import axios from "axios"; // Import axios for making API requests
+import { BlogTab } from "./BlogTab";
 
 export default function Page() {
   const { id } = useParams();
-  const [src, setSrc] = useState("");
+  const [blog, setBlog] = useState(null); // State to store the selected blog
+  const [blogs, setBlogs] = useState([]); // State to store the other blogs
+  const [src, setSrc] = useState(""); // State to store the current URL
+  const [loading, setLoading] = useState(true); // State for loading state
+  const [error, setError] = useState(null); // State to handle errors
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setSrc(window.location.href);
     }
-  }, []);
 
-  // Find the correct blog post using the slug
-  const blog = allBlogs.find((b) => b.id === id);
-  const blogs = allBlogs
-    .filter((b) => b.id !== id) // Filter out the blog with the given id
-    .sort(() => 0.5 - Math.random()) // Shuffle the array
-    .slice(0, 5); // Select the first 5 items
+    // Fetch blog data from the API
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/v1/blog"); // Replace with your API endpoint
+        console.log(response);
+        if (response.data.success) {
+          const allBlogs = response.data.data;
+          const selectedBlog = allBlogs.find((b) => b._id === id); // Find the selected blog
+          const otherBlogs = allBlogs.filter((b) => b._id !== id) // Filter out the selected blog
+            .sort(() => 0.5 - Math.random()) // Shuffle the array
+            .slice(0, 5); // Limit to 5 blogs
+
+          setBlog(selectedBlog);
+          setBlogs(otherBlogs);
+        } else {
+          setError("Failed to fetch blogs.");
+        }
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+        setError("Failed to load blogs. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs(); // Fetch the blog data
+  }, [id]); // Re-fetch if the `id` parameter changes
 
   if (!blog) {
     return <p className="text-white text-center mt-12">Blog post not found.</p>;
@@ -50,7 +68,7 @@ export default function Page() {
         pagePath={"blogs"}
         dynamicPage={"Details"}
       />
-      <div className=" max-w-screen-xl mx-auto px-[5%] overflow-x-hidden">
+      <div className=" max-w-screen-lg mx-auto  px-[5%] xl:px-0 overflow-x-hidden">
         <BlogTab blog={blog} />
         <div className="flex items-center space-x-2 my-12 sm:my-14 lg:my-16 2xl:my-20">
           <h1 className="text-lg lg:text-xl font-medium">Share :</h1>
@@ -84,14 +102,14 @@ export default function Page() {
           </a>
         </div>
       </div>
-      <div className="max-w-screen-xl mx-auto px-[5%] pb-10 sm:pb-14 lg:pb-16 2xl:pb-20 overflow-x-hidden">
+      <div className="max-w-screen-xl mx-auto  px-[5%] xl:px-0 pb-10 sm:pb-14 lg:pb-16 2xl:pb-20 overflow-x-hidden">
         <Heading>
           <span className="text-secondary">More </span>Blogs
         </Heading>
         <Carousel className="w-full max-w-screen-xl mx-auto mt-6 sm:mt-7 lg:mt-9 2xl:mt-10">
           <CarouselContent>
             {blogs.map((blog, index) => (
-              <CarouselItem key={index} className="lg:basis-1/2 ">
+              <CarouselItem key={index} className="lg:basis-1/2">
                 <BlogCard blog={blog} />
               </CarouselItem>
             ))}

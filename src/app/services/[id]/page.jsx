@@ -27,8 +27,8 @@ export default function Page() {
     <main className="overflow-x-hidden">
       <BreadcrumbSection dynamicPage={service?.title?.en} />
       <ServicesTab service={service} />
-      <div className="max-w-screen-xl mx-auto px-[5%]">
-        <hr className="my-12 sm:my-14 lg:my-16 2xl:my-20" />
+      <div className="max-w-screen-lg mx-auto px-[5%] xl:px-0">
+        <hr className="mb-10 sm:mb-12 lg:mb-14 2xl:mb-16" />
         <h1 className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-semibold">
           Our Other Services
         </h1>
@@ -39,7 +39,7 @@ export default function Page() {
         </div>
       </div>
       <div className="mt-12 sm:mt-14 lg:mt-16 2xl:mt-20">
-        <div className="max-w-screen-xl mx-auto px-[5%]">
+        <div className="max-w-screen-lg mx-auto  px-[5%] xl:px-0">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-semibold  -mb-5 sm:-mb-7 lg:-mb-9 2xl:-mb-12">
             Consult Now
           </h1>

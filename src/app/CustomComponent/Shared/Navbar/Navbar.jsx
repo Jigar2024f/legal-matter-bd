@@ -37,6 +37,10 @@ export default function Navbar() {
     return () => document.body.classList.remove("overflow-hidden");
   }, [isMenuOpen]);
 
+
+  if (pathname === "/dashboard") {
+    return null;
+  }
   return (
     <div className="relative w-full z-50 sm:px-[5%] sm:py-8">
       <div className="max-w-screen-xl mx-auto container">

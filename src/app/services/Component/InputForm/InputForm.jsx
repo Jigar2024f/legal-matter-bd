@@ -172,7 +172,7 @@ const InputForm = () => {
             <div className="flex flex-col sm:flex-row items-start justify-end sm:items-center gap-5 mt-5">
               <button
                 type="submit"
-                className="sm:text-lg px-8 py-2 border border-primary rounded-full hover:scale-105 transition-transform duration-500 ease-in-out"
+                className="sm:text-lg px-8 py-2 border border-primary rounded-full hover:bg-primary hover:text-white transition-transform duration-500 ease-in-out"
               >
                 Send
               </button>

@@ -66,7 +66,7 @@ const InputForm = () => {
         <div className="border bg-[#C4C4C4] h-[2px]" />
         <div className="border bg-[#C4C4C4] h-[2px]" />
       </div>
-      <div className="max-w-screen-xl mx-auto px-[5%]">
+      <div className="max-w-screen-lg mx-auto px-[5%] xl:px-0">
         <div className="relative z-20 px-5 sm:px-10 py-10 bg-lightGray border border-gray-300 my-12 sm:my-14 lg:my-16 2xl:my-20">
           <form
             className="text-start flex flex-col gap-5"
@@ -172,7 +172,7 @@ const InputForm = () => {
             <div className="flex flex-col sm:flex-row items-start justify-end sm:items-center gap-5 mt-5">
               <button
                 type="submit"
-                className="sm:text-lg px-8 py-2 border border-primary rounded-full hover:scale-105 transition-transform duration-500 ease-in-out"
+                className="sm:text-lg px-8 py-2 border border-primary rounded-full hover:bg-primary hover:text-white transition-transform duration-500 ease-in-out"
               >
                 Send
               </button>

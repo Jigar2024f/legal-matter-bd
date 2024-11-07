@@ -9,7 +9,7 @@ export default function OurServicesCard({ service }) {
         <h1 className="text-2xl font-semibold">{title?.en}</h1>
         <div className="h-[1.5px] w-[50%] bg-mediumGray"></div>
         <Link href={`/services/${id}`}>
-          <button className="text-base sm:text-lg px-5 py-1 border border-primary font-light rounded-full flex justify-center items-center gap-1 hover:scale-105 transition-transform duration-500 ease-in-out">
+          <button className="text-base sm:text-lg px-5 py-1 border border-primary font-light rounded-full flex justify-center items-center gap-1 hover:text-white hover:bg-black transition-transform duration-500 ease-in-out">
             Details
           </button>
         </Link>

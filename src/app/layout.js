@@ -1,6 +1,4 @@
 import { Toaster } from "@/components/ui/toaster";
-import Footer from "./CustomComponent/Shared/Footer/Footer";
-import Navbar from "./CustomComponent/Shared/Navbar/Navbar";
 import "./globals.css";
 import { Inter_Tight, Noto_Serif_Bengali } from "next/font/google";
 // Load the Inter Tight font
@@ -28,9 +26,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${interTight.className} ${notoSerifBengali.variable} antialiased bg-white text-primary overflow-x-hidden`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+      {children}
         <Toaster />
       </body>
     </html>

@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import {
   FaFacebook,
@@ -5,83 +6,59 @@ import {
   FaLinkedin,
   FaTwitter,
 } from "react-icons/fa";
+import LegalMatterBD from "./LegalMatterBD";
+import { MdEmail } from "react-icons/md";
 
 export default function Footer(params) {
   return (
     <footer className="bg-primary text-white mt-12 sm:mt-14 lg:mt-16 2xl:mt-20  py-12 sm:py-14 lg:py-16 2xl:py-20">
-      <div className="max-w-screen-xl mx-auto px-[5%] flex flex-col sm:flex-row gap-5 text-sm sm:text-base lg:text-lg 2xl:text-xl font-medium">
-        <div className="sm:hidden">
-          <Image
-            src="/images/footer/logo.png"
-            height={100}
-            width={90}
-            alt="logo"
-            className="md:h-20 w-fit mb-2"
-          />
-          <h1 className=" text-base sm:text-lg lg:text-xl font-medium">
-            Legal Matter BD
-          </h1>
+      <div className=""></div>
+      <div className="max-w-screen-xl mx-auto px-[5%] xl:px-0 flex flex-col sm:flex-row justify-between items-start gap-5">
+        <div className="font-medium space-y-5">
+          <div className="flex justify-between items-start gap-3 w-full ">
+            <div className="block">
+              <Image
+                src="/images/footer/logo.png"
+                height={100}
+                width={90}
+                alt="logo"
+                className="h-16 w-fit mb-2"
+              />
+              <h1 className=" text-base sm:text-lg lg:text-xl 2xl:text-2xl font-medium">
+                <LegalMatterBD />
+              </h1>
+            </div>
+          </div>
+          <div className="">
+            <div className="flex items-center justify-start gap-2">
+              <h1 className="text-xs sm:text-sm lg:text-base 2xl:text-lg flex items-center gap-1">
+              <MdEmail className="text-3xl"/> Email Us
+              </h1>
+            </div>
+            <h1 className="text-sm sm:text-base lg:text-lg 2xl:text-xl">
+              Loremipsum@gmail.com
+            </h1>
+          </div>
         </div>
-        <div>
-          <h1 className="text-xs sm:text-sm lg:text-base 2xl:text-lg">
-            Address 1
-          </h1>
-          <p>
-            House No. 56, Road No. 15/A, Block E, 4th Floor, Apartment 4B,
-            Gulshan Model Town, Gulshan-2, Dhaka 1212, Bangladesh.
-          </p>
+        <div className="space-y-3 text-lg">
+          <h1 className="text-2xl font-semibold underline mb-5">Useful Links</h1>
+          <p>E- passport</p>
+          <p>BRTA</p>
+          <p>IDtax</p>
+          <p>Bangladesh Bar Council</p>
+          <p>International Bar Association</p>
         </div>
-        <div>
-          <h1 className="text-xs sm:text-sm lg:text-base 2xl:text-lg">
-            Address 2
-          </h1>
-          <p>
-            House No. 56, Road No. 15/A, Block E, 4th Floor, Apartment 4B,
-            Gulshan Model Town, Gulshan-2, Dhaka 1212, Bangladesh.
-          </p>
-        </div>
-        <div>
-          <h1 className="text-xs sm:text-sm lg:text-base 2xl:text-lg">
-            Address 3
-          </h1>
-          <p>
-            House No. 56, Road No. 15/A, Block E, 4th Floor, Apartment 4B,
-            Gulshan Model Town, Gulshan-2, Dhaka 1212, Bangladesh.
-          </p>
+        <div className="space-y-3 text-lg">
+          <h1 className="text-2xl font-semibold underline mb-5">Quick Links</h1>
+          <p>Supreme Court of Bangladesh</p>
+          <p>Ministry of Law</p>
+          <p>Ministry of Home Affairs </p>
+          <p>National Board of Revenue</p>
+          <p>Law and Justice Division</p>
         </div>
       </div>
-      <div className="max-w-screen-xl mx-auto px-[5%] grid grid-cols-1 sm:grid-cols-3 items-start sm:items-center gap-5 font-medium  mt-2 sm:mt-7 lg:mt-9 2xl:mt-12">
-        <div className="flex justify-between items-start gap-3 w-full ">
-          <div className="hidden sm:block">
-            <Image
-              src="/images/footer/logo.png"
-              height={100}
-              width={90}
-              alt="logo"
-              className="h-16 w-fit mb-2"
-            />
-            <h1 className=" text-base sm:text-lg lg:text-xl 2xl:text-2xl font-medium">
-              Legal Matter BD
-            </h1>
-          </div>
-        </div>
-        <div className="hidden sm:block">
-          <div className="flex items-center justify-start gap-2">
-            <h1 className="text-xs sm:text-sm lg:text-base 2xl:text-lg">
-              Email Us
-            </h1>
-          </div>
-          <h1 className="text-sm sm:text-base lg:text-lg 2xl:text-xl">
-            Loremipsum@gmail.com
-          </h1>
-          <div className="flex items-center justify-center sm:justify-start w-full gap-2 lg:gap-3 mt-4">
-            <FaFacebook className="text-2xl lg:text-3xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
-            <FaTwitter className="text-2xl lg:text-3xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
-            <FaLinkedin className="text-2xl lg:text-3xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
-            <FaInstagramSquare className="text-2xl lg:text-3xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
-          </div>
-        </div>
-        <div className="">
+      <div className="max-w-screen-xl mx-auto px-[5%] xl:px-0 flex flex-col sm:flex-row justify-between gap-5 mt-5">
+        <div className="sm:w-1/3">
           <h1 className="text-base lg:text-lg 2xl:text-xl mb-2 sm:mb-4">
             Payment Partner
           </h1>
@@ -117,25 +94,16 @@ export default function Footer(params) {
               />
             </figure>
           </div>
-
-          <div className="mt-5 sm:hidden">
-            <div className="flex items-center justify-start gap-2">
-              <h1 className="text-sm lg:text-base 2xl:text-lg">Email Us</h1>
-            </div>
-            <h1 className="text-base lg:text-lg 2xl:text-xl">
-              Loremipsum@gmail.com
-            </h1>
-            <div className="flex items-center justify-start sm:justify-start w-full gap-2 lg:gap-3 mt-4">
-              <FaFacebook className="text-2xl lg:text-3xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
-              <FaTwitter className="text-2xl lg:text-3xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
-              <FaLinkedin className="text-2xl lg:text-3xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
-              <FaInstagramSquare className="text-2xl lg:text-3xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
-            </div>
-          </div>
+        </div>
+        <div className="flex items-end justify-center sm:justify-end w-full gap-3 lg:gap-4">
+          <FaFacebook className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
+          <FaTwitter className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
+          <FaLinkedin className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
+          <FaInstagramSquare className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
         </div>
       </div>
       <hr className="max-w-screen-xl mx-auto my-4 sm:my-6 lg:my-8 2xl:my-10" />
-      <div className="max-w-screen-xl mx-auto px-[5%] flex flex-row justify-between items-center gap-2">
+      <div className="max-w-screen-xl mx-auto px-[5%] xl:px-0 flex flex-row justify-between items-center gap-2">
         <div className="flex justify-start items-center gap-2">
           <h1 className="text-xs sm:text-sm lg:text-base 2xl:text-lg">
             Website made by{" "}
@@ -143,15 +111,12 @@ export default function Footer(params) {
               <b>Qrinux</b>
             </a>
           </h1>
-          {/* <Image
-            src="/images/footer/Qrinux.png"
-            height={100}
-            width={90}
-            alt="logo"
-            className="h-6 sm:h-8 w-fit"
-          /> */}
         </div>
-        <a href="www.qrinux.com" target="_blank" className="text-xs sm:text-sm lg:text-base 2xl:text-lg">
+        <a
+          href="www.qrinux.com"
+          target="_blank"
+          className="text-xs sm:text-sm lg:text-base 2xl:text-lg"
+        >
           www.qrinux.com
         </a>
       </div>

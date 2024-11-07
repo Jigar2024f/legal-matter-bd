@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
-import { allBlogs } from "../../../public/data/blogs";
+import { useState, useEffect } from "react";
+import axios from "axios"; // Import axios for making API requests
 import BlogCard from "../CustomComponent/Card/BlogCard/BlogCard";
 import Heading from "../CustomComponent/Ui/Heading/Heading";
 import {
@@ -16,15 +15,39 @@ import {
 } from "@/components/ui/pagination";
 import { BreadcrumbSection } from "../CustomComponent/BreadcrumbSection/BreadcrumbSection";
 
-export default function Page(params) {
-  const blogsPerPage = 6; // Show 6 blogs per page
+export default function Page() {
+  const blogsPerPage = 10; // Show 6 blogs per page
+  const [blogs, setBlogs] = useState([]); // State to store blog data
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true); // State for loading
+  const [error, setError] = useState(null); // State for error handling
+
+  useEffect(() => {
+    // Fetch blogs data from API
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/v1/blog"); // Replace with your API URL
+        if (response.data.success) {
+          setBlogs(response.data.data); // Assuming response.data.data contains blog data
+        } else {
+          setError("Failed to fetch blogs.");
+        }
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+        setError("Failed to load blogs. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs(); // Call the fetch function
+  }, []);
 
   // Calculate the total number of pages
-  const totalPages = Math.ceil(allBlogs.length / blogsPerPage);
+  const totalPages = Math.ceil(blogs.length / blogsPerPage);
 
   // Get the blogs to be displayed on the current page
-  const currentBlogs = allBlogs.slice(
+  const currentBlogs = blogs.slice(
     (currentPage - 1) * blogsPerPage,
     currentPage * blogsPerPage
   );
@@ -37,7 +60,7 @@ export default function Page(params) {
 
   return (
     <>
-      <BreadcrumbSection pageName={"Blogs"}/>
+      <BreadcrumbSection pageName={"Blogs"} />
       <section className="mx-[5%] my-12 sm:my-14 lg:my-16 2xl:my-20 text-center">
         <div className="max-w-screen-xl mx-auto">
           <Heading>

@@ -4,7 +4,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 
 export function BlogTab({ blog }) {
-  const { title, cover, description, author, category } = blog || {};
+  const {
+    title_bangla,
+    title_english,
+    image,
+    description_bangla,
+    description_english,
+    author,
+    category_english,
+    category_bangla,
+  } = blog || {};
+  console.log(blog);
   return (
     <Tabs defaultValue="Bangla" className="">
       <div className="flex justify-center my-12 sm:my-14 lg:my-16 2xl:my-20">
@@ -15,57 +25,59 @@ export function BlogTab({ blog }) {
       </div>
       <TabsContent value="English">
         <section className="my-12 sm:my-14 lg:my-16 2xl:my-20">
-          <h1 className="text-xl sm:text-3xl lg:text-4xl 2xl:text-4xl font-extrabold leading-[30px] md:leading-tight">{title?.en}</h1>
+          <h1 className="text-xl sm:text-3xl lg:text-4xl 2xl:text-4xl font-extrabold leading-[30px] md:leading-tight">
+            {title_english}
+          </h1>
           <div className="flex gap-10 flex-wrap my-2 sm:my-4 lg:my-6 2xl:my-8">
             <Description>
-              <span className="text-[#6B7280]">Author: </span>
-
-              {author?.en}
-            </Description>
-            <Description>
               <span className="text-[#6B7280]">Category: </span>
-              {author?.en}
+              {category_english}
             </Description>
           </div>
-          <figure className="h-52 sm:h-80 lg:h-[500px]  my-10 sm:my-14 lg:my-18 2xl:my-24">
+          <figure className="h-52 sm:h-80 lg:h-[500px]  my-5 sm:my-7 lg:my-8 2xl:my-10">
             <Image
-              src={cover}
+              src={image}
               height={730}
               width={505}
-              alt={title?.en}
+              alt={title_english}
               className="h-full w-full object-cover rounded"
               priority
             />
           </figure>
-          <Description>{description?.en}</Description>
+          <p
+            className="text-sm sm:text-base lg:text-lg 2xl:text-xl"
+            dangerouslySetInnerHTML={{ __html: description_english }}
+          ></p>
         </section>
       </TabsContent>
       <TabsContent value="Bangla">
         <section className="my-12 sm:my-14 lg:my-16 2xl:my-20 noto-serif-bengali-font">
-          <h1 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-4xl font-extrabold leading-[22px] md:leading-tight">{title?.bn}</h1>
+          <h1 className="text-lg sm:text-2xl lg:text-3xl 2xl:text-4xl font-extrabold leading-[22px] md:leading-tight">
+            {title_bangla}
+          </h1>
           <div className="flex gap-10 flex-wrap my-2 sm:my-4 lg:my-6 2xl:my-8">
             <Description>
-              <span className="text-[#6B7280]">লেখক: </span>
-              {author?.bn}
-            </Description>
-            <Description>
               <span className="text-[#6B7280]">বিভাগ: </span>
-              {author?.bn}
+              {category_bangla}
             </Description>
           </div>
-          <figure className="h-52 sm:h-80 lg:h-[500px]  my-10 sm:my-14 lg:my-18 2xl:my-24">
+          <figure className="h-52 sm:h-80 lg:h-[500px]  my-5 sm:my-7 lg:my-8 2xl:my-10">
             <Image
-              src={cover}
+              src={image}
               height={730}
               width={505}
-              alt={title?.bn}
+              alt={title_bangla}
               className="h-full w-full object-cover rounded"
               priority
             />
           </figure>
-          <Description>{description?.bn}</Description>
+          <p
+            className="text-sm sm:text-base lg:text-lg 2xl:text-xl"
+            dangerouslySetInnerHTML={{ __html: description_bangla }}
+          ></p>
         </section>
       </TabsContent>
     </Tabs>
   );
 }
+

@@ -1,3 +1,4 @@
+"use client"; // Make Home a client component
 import { FaArrowRight } from "react-icons/fa";
 import Description from "../../Ui/Description/Description";
 import Heading from "../../Ui/Heading/Heading";
@@ -12,35 +13,38 @@ export default function Banner() {
   };
 
   return (
-    <section className="my-12 sm:my-14 lg:my-16 2xl:my-20">
-      <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 justify-between items-center gap-5 px-[5%]">
-        <Heading>
-          Your Problem,
-          <br />
-          The <span className="text-secondary">headache </span>
-          <br />
-          of solving it <br /> is ours
-        </Heading>
-        <div>
-          <Description>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud
-          </Description>
-          <button
-            onClick={scrollToContact}
-            className="text-base sm:text-lg px-6 py-2 border border-primary rounded-full flex justify-center items-center gap-1 mt-4 hover:scale-105 transition-transform duration-500 ease-in-out"
-          >
-            Let’s Talk <FaArrowRight className="text-sm" />
-          </button>
+    <section className="my-6 sm:my-7 lg:my-8 2xl:my-10">
+      <div className="  mx-[5%]">
+        <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 justify-between items-center gap-5 lg:gap-8">
+          <h1 className="text-5xl sm:text-6xl lg:text-6xl 2xl:text-7xl font-extrabold md:leading-tight">
+            Your Problem,
+            <br className="hidden lg:block" />
+            The <span className="text-secondary">headache </span>
+            <br className="hidden lg:block" />
+            of solving it <br className="hidden sm:block" /> is ours
+          </h1>
+          <div>
+            <Description>
+              Legal Matter BD is here to help you with your legal issues. Our
+              experienced team works by your side, making the process simpler,
+              and giving you clear advice and practical solutions so you can
+              feel confident moving forward.
+            </Description>
+            <button
+              onClick={scrollToContact}
+              className="text-base sm:text-lg px-6 py-2 border border-primary rounded-full flex justify-center items-center gap-1 mt-4 lg:mt-6 hover:bg-primary hover:text-white transition-transform duration-500 ease-in-out"
+            >
+              Let’s Talk <FaArrowRight className="text-sm" />
+            </button>
+          </div>
         </div>
       </div>
       {/* Image Section */}
-      <figure className="max-w-screen-xl mx-auto mt-5 sm:mt-7 lg:mt-9 2xl:mt-12 sm:px-[5%] h-44 sm:h-80 lg:h-96 2xl:h-[500px] px-[5%]">
+      <figure className="max-w-screen-xl mx-auto mt-6 sm:mt-8 lg:mt-10 2xl:mt-16 sm:px-[5%] px-[5%]">
         <Image
           src="/images/home/banner.png"
-          height={730}
-          width={505}
+          height={626}
+          width={638}
           alt="Home page banner image"
           className="h-full w-full object-cover object-center rounded sm:rounded-lg"
           priority
