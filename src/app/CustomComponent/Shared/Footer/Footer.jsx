@@ -38,7 +38,7 @@ export default function Footer(params) {
 
             <a
               href="mailto:info@legalmatterbd.com"
-              className=" text-lg 2xl:text-xl"
+              className="text-lg 2xl:text-xl text-white hover:text-secondary transition-colors duration-300"
             >
               info@legalmatterbd.com
             </a>

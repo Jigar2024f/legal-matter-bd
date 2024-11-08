@@ -87,15 +87,16 @@ export default function Navbar() {
 
         {/* Mobile Navbar */}
         <div className="relative md:hidden z-50 flex justify-between items-center px-[5%] py-6 sm:py-8 bg-white overflow-x-hidden">
-          <Link href="/">
+          <Link className="flex flex-col items-center" href="/">
             <Image
               src="/images/navbar/logo.png"
-              height={100} 
+              height={100}
               width={90}
               alt="logo"
               className="relative z-50"
-              quality={100} 
+              quality={100}
             />
+            <span className="text-sm">Legal Matter BD</span>
           </Link>
 
           <button
