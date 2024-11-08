@@ -18,9 +18,9 @@ export default function Banner() {
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 justify-between items-center gap-5 lg:gap-8">
           <header>
             <h1 className="text-5xl sm:text-6xl lg:text-6xl 2xl:text-7xl font-extrabold mt-7 lg:mt-10">
-              Your Problem, The{" "}
+              Your Problem,
+              <br className="hidden lg:block" />The{" "}
               <span className="text-secondary">headache </span>
-              <br className="hidden " />
               of solving it is ours
             </h1>
           </header>

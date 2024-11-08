@@ -33,7 +33,7 @@ const CreateBlog = () => {
   }, [contentEnglish, contentBangla]);
 
   const handleImageUpload = async (imageFile) => {
-    console.log({ imageFile });
+
     const formData = new FormData();
     formData.append("image", imageFile);
     const apiKey = "4c33fed168c7c87fe3c27db1cd78341b";
@@ -49,7 +49,7 @@ const CreateBlog = () => {
           withCredentials: false,
         }
       );
-      console.log({ response });
+    
       return response.data.data.display_url;
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -105,7 +105,7 @@ const CreateBlog = () => {
       ...formData,
       image: uploadedImageUrl,
     };
-    console.log(updatedFormData);
+  
 
     try {
       const response = await axios.post(

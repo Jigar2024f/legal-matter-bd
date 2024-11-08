@@ -20,6 +20,7 @@ import {
 import BlogCard from "@/app/CustomComponent/Card/BlogCard/BlogCard";
 import axios from "axios"; // Import axios for making API requests
 import { BlogTab } from "./BlogTab";
+import Loading from "@/app/CustomComponent/Shared/Loading";
 
 export default function Page() {
   const { id } = useParams();
@@ -38,9 +39,9 @@ export default function Page() {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          " https://ligalmatter.vercel.app/api/v1/blog"
+          " https://ligalmatter.vercel.app/api/v1/blog",
         ); // Replace with your API endpoint
-        console.log(response);
+    
         if (response.data.success) {
           const allBlogs = response.data.data;
           const selectedBlog = allBlogs.find((b) => b._id === id); // Find the selected blog
@@ -64,9 +65,13 @@ export default function Page() {
 
     fetchBlogs(); // Fetch the blog data
   }, [id]); // Re-fetch if the `id` parameter changes
-
+  if (loading) {
+    return <Loading />;
+  }
   if (!blog) {
-    return <p className="text-white text-center mt-12">Blog post not found.</p>;
+    return (
+      <p className="text-center mt-12 text-red-700">Blog post not found.</p>
+    );
   }
 
   return (
@@ -110,20 +115,27 @@ export default function Page() {
           </a>
         </div>
       </div>
-      <div className="max-w-screen-xl mx-auto  px-[5%] xl:px-0 pb-10 sm:pb-14 lg:pb-16 2xl:pb-20 overflow-x-hidden">
+      <div className="max-w-screen-xl mx-auto    pb-10 sm:pb-14 lg:pb-16 2xl:pb-20 overflow-x-hidden px-[5%]">
         <Heading>
           <span className="text-secondary">More </span>Blogs
         </Heading>
-        <Carousel className="w-full max-w-screen-xl mx-auto mt-6 sm:mt-7 lg:mt-9 2xl:mt-10">
-          <CarouselContent>
+        <Carousel
+          className="w-full max-w-screen-xl mx-auto mt-5  sm:mt-7 lg:mt-9 2xl:mt-12"
+          aria-label="Our Blogs Carousel"
+        >
+          <CarouselContent role="list">
             {blogs.map((blog, index) => (
-              <CarouselItem key={index} className="lg:basis-1/2">
+              <CarouselItem
+                key={index}
+                role="listitem"
+                className="lg:basis-1/3"
+              >
                 <BlogCard blog={blog} />
               </CarouselItem>
             ))}
           </CarouselContent>
-          <FitnessCarouselPrevious />
-          <FitnessCarouselNext />
+          <FitnessCarouselPrevious aria-label="Previous Blog" />
+          <FitnessCarouselNext aria-label="Next Blog" />
         </Carousel>
       </div>
     </section>

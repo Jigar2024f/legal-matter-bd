@@ -14,7 +14,7 @@ export function BlogTab({ blog }) {
     category_english,
     category_bangla,
   } = blog || {};
-  console.log(blog);
+
   return (
     <Tabs defaultValue="Bangla" className="">
       <div className="flex justify-center my-12 sm:my-14 ">

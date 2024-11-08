@@ -4,14 +4,35 @@ import SubHeading from "../../Ui/SubHeading/SubHeading";
 
 export default function OurAssociateMembers() {
   return (
-    <section className="relative bg-gradient-to-r from-black via-gray-900 to-black text-white py-16 px-[5%] my-12 sm:my-14 lg:my-16 2xl:my-20 overflow-hidden">
+    <section className="relative bg-gradient-to-r from-black via-gray-900 to-black text-white  px-[5%] py-10 sm:py-14 lg:py-16 2xl:py-20 overflow-hidden">
       {/* Background Decorative Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-70 pointer-events-none"></div>
 
       {/* Content Container */}
       <div className="relative max-w-screen-xl mx-auto flex flex-col lg:flex-row  gap-8 lg:gap-16 z-20">
         {/* Left Section: Title and Subtitle */}
-        <div className="lg:w-2/5 sm:text-center lg:text-left">
+        <header className="">
+          <div className="flex items-center gap-4 ">
+            <SubHeading>
+              <span className="text-white">We Are Here For You</span>
+            </SubHeading>
+            <figure className="mt-1 2xl:mt-0 flex-1">
+              <Image
+                src="/images/home/arrow.png"
+                height={730}
+                width={505}
+                alt="Decorative arrow image for Who We Are section"
+                className="h-full w-fit"
+                priority
+              />
+            </figure>
+          </div>
+          <Heading>
+            <span className="text-opacity-40 text-white">Our</span> Associate
+            Members
+          </Heading>
+        </header>
+        {/* <div className="lg:w-2/5 sm:text-center lg:text-left">
           <SubHeading>
             <span className="text-white">We Are Here For You</span>
           </SubHeading>
@@ -19,7 +40,7 @@ export default function OurAssociateMembers() {
             <span className="text-opacity-40 text-white">Our</span> Associate
             Members
           </Heading>
-        </div>
+        </div> */}
 
         {/* Right Section: Member Profile Card */}
         <div className="lg:w-3/5 flex flex-col lg:flex-row  gap-6 lg:gap-10 bg-white bg-opacity-5 backdrop-blur-md p-5 md:p-8 rounded-lg shadow-xl  transition-shadow duration-300 ease-in-out transform ">

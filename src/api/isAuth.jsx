@@ -8,7 +8,7 @@ const isAuth = (Component) => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState("");
     const path = usePathname();
-    console.log({ path });
+
 
     useEffect(() => {
       const checkAuth = async () => {

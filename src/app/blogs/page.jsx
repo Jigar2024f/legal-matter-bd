@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import axios from "axios"; // Import axios for making API requests
 import BlogCard from "../CustomComponent/Card/BlogCard/BlogCard";
@@ -14,6 +13,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { BreadcrumbSection } from "../CustomComponent/BreadcrumbSection/BreadcrumbSection";
+import Loading from "../CustomComponent/Shared/Loading";
 
 export default function Page() {
   const blogsPerPage = 10; // Show 6 blogs per page
@@ -27,7 +27,7 @@ export default function Page() {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          " https://ligalmatter.vercel.app/api/v1/blog"
+          " https://ligalmatter.vercel.app/api/v1/blog",
         ); // Replace with your API URL
         if (response.data.success) {
           setBlogs(response.data.data); // Assuming response.data.data contains blog data
@@ -35,7 +35,6 @@ export default function Page() {
           setError("Failed to fetch blogs.");
         }
       } catch (error) {
-        console.error("Error fetching blogs:", error);
         setError("Failed to load blogs. Please try again later.");
       } finally {
         setLoading(false);
@@ -44,14 +43,16 @@ export default function Page() {
 
     fetchBlogs(); // Call the fetch function
   }, []);
-
+if(loading){
+  return <Loading/>
+}
   // Calculate the total number of pages
   const totalPages = Math.ceil(blogs.length / blogsPerPage);
 
   // Get the blogs to be displayed on the current page
   const currentBlogs = blogs.slice(
     (currentPage - 1) * blogsPerPage,
-    currentPage * blogsPerPage
+    currentPage * blogsPerPage,
   );
 
   const handlePageChange = (page) => {

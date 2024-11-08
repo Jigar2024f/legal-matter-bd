@@ -80,7 +80,7 @@ const CreateBlog = () => {
       ...formData,
       image: uploadedImageUrl,
     };
-    console.log(updatedFormData);
+
 
     try {
       const response = await axios.post(

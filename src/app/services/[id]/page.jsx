@@ -9,7 +9,7 @@ import InputForm from "@/app/CustomComponent/Home/Contact/InputForm";
 
 export default function Page() {
   const { id } = useParams();
-  console.log(id);
+
 
   // Find the correct services using the slug
   const service = servicesData.find((b) => b.id === id);

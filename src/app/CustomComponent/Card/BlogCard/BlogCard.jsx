@@ -6,8 +6,8 @@ export default function BlogCard({ blog }) {
   const { _id, image, description_bangla, title_bangla } = blog || {};
 
   return (
-    <div className="flex flex-col sm:flex-row lg:flex-flex justify-center gap-6 noto-serif-bengali-font">
-      <figure className="sm:w-2/5 h-52 lg:w-1/2 2xl:w-1/3 sm:max-h-60 lg:h-80">
+    <div className="flex flex-col sm:flex-row lg:flex-col justify-center gap-6 noto-serif-bengali-font ">
+      <figure className="sm:w-1/2 lg:w-auto">
         <Image
           src={image}
           height={730}
@@ -60,8 +60,8 @@ export default function BlogCard({ blog }) {
             className="hidden 2xl:block"
             dangerouslySetInnerHTML={{
               __html:
-                description_bangla?.length > 290
-                  ? `${description_bangla?.slice(0, 290)}...`
+                description_bangla?.length > 150
+                  ? `${description_bangla?.slice(0, 180)}...`
                   : description_bangla,
             }}
           ></span>

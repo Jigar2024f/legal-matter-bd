@@ -29,7 +29,7 @@ const Login = () => {
       );
 
       const { data } = response;
-      console.log("Login successful", data);
+ 
       setSuccess(data.message);
       router.push("/dashboard");
     } catch (err) {

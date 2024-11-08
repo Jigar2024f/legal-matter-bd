@@ -3,7 +3,7 @@ import Heading from "../../Ui/Heading/Heading";
 import SubHeading from "../../Ui/SubHeading/SubHeading";
 import Image from "next/image";
 
-export default function AboutUs(params) {
+export default function AboutUs() {
   return (
     <section className="relative bg-primary text-white my-12 sm:my-14 lg:my-16 2xl:my-20 text-justify overflow-hidden px-[5%]">
       <div className="max-w-screen-xl mx-auto py-10 sm:py-14 lg:py-18 2xl:my-20  flex flex-col sm:flex-row gap-5">

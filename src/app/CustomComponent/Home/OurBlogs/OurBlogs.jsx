@@ -3,13 +3,10 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   FitnessCarouselNext,
   FitnessCarouselPrevious,
 } from "@/components/ui/carousel";
@@ -45,7 +42,12 @@ export default function OurBlogs() {
     fetchBlogs();
   }, []);
 
-  if (loading) return <div><Loading/></div>;
+  if (loading)
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   if (error) return <div>{error}</div>;
 
   return (
@@ -68,7 +70,7 @@ export default function OurBlogs() {
               <CarouselItem
                 key={index}
                 role="listitem"
-                className="lg:basis-1/2"
+                className="lg:basis-1/3"
               >
                 <BlogCard blog={blog} />
               </CarouselItem>
