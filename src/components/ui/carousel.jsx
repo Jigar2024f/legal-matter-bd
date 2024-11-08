@@ -172,7 +172,7 @@ const CarouselPrevious = React.forwardRef(
           variant={variant}
           size={size}
           className={cn(
-            "absolute h-14 w-14 rounded-full text-white bg-[#4F41B6] border-[2.5px] border-white hover:bg-transparent hover:text-white z-50 ",
+            "absolute h-16 w-16 rounded-full text-white bg-[#4F41B6] border-[2.5px] border-white hover:bg-transparent hover:text-white z-50 ",
             orientation === "horizontal"
               ? "left-[10%] top-1/2 -translate-y-1/2 "
               : "-top-4 left-1/2 -translate-x-1/2 rotate-90",
@@ -182,7 +182,7 @@ const CarouselPrevious = React.forwardRef(
           onClick={scrollPrev}
           {...props}
         >
-          <FaChevronLeft className="" />
+          <FaChevronLeft className="text-2xl" /> {/* Increased to text-2xl */}
           <span className="sr-only">Previous slide</span>
         </Button>
       </div>
@@ -202,7 +202,7 @@ const CarouselNext = React.forwardRef(
           variant={variant}
           size={size}
           className={cn(
-            "absolute h-14 w-14 rounded-full text-white bg-[#4F41B6] border-[2.5px] border-white hover:bg-transparent hover:text-white z-50",
+            "absolute h-16 w-16 rounded-full text-white bg-[#4F41B6] border-[2.5px] border-white hover:bg-transparent hover:text-white z-50",
             orientation === "horizontal"
               ? "right-[10%] top-1/2 -translate-y-1/2"
               : "-bottom-4 left-1/2 -translate-x-1/2 rotate-90",
@@ -212,7 +212,7 @@ const CarouselNext = React.forwardRef(
           onClick={scrollNext}
           {...props}
         >
-          <FaChevronRight className="h-full w-full " />
+          <FaChevronRight className="text-2xl" /> {/* Increased to text-2xl */}
           <span className="sr-only">Next slide</span>
         </Button>
       </div>
@@ -231,9 +231,9 @@ const FitnessCarouselPrevious = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          "absolute h-7 w-7 sm:h-14 sm:w-14 rounded-full text-gray-600 sm:text-primary bg-transparent border-[2px] sm:border-[2.5px] border-gray-600 sm:border-primary  z-50",
+          "absolute h-10 w-10 sm:h-12 sm:w-12 rounded-full text-gray-600 sm:text-primary bg-transparent border-[2px] sm:border-[2.5px] border-gray-600 sm:border-primary  z-50",
           orientation === "horizontal"
-            ? "right-9 sm:right-20 -top-10 sm:-top-14 -translate-y-1/2 "
+            ? "right-12 sm:right-16 -top-10 sm:-top-14 -translate-y-1/2 "
             : "-top-4 left-1/2 -translate-x-1/2 rotate-90",
           className,
         )}
@@ -241,7 +241,7 @@ const FitnessCarouselPrevious = React.forwardRef(
         onClick={scrollPrev}
         {...props}
       >
-        <FaChevronLeft className="" />
+        <FaChevronLeft className="text-2xl" /> {/* Increased to text-2xl */}
         <span className="sr-only">Previous slide</span>
       </Button>
     );
@@ -259,7 +259,7 @@ const FitnessCarouselNext = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          "absolute h-7 w-7 sm:h-14 sm:w-14 rounded-full text-gray-600 sm:text-primary bg-transparent border-[2px] sm:border-[2.5px] border-gray-600 sm:border-primary  z-50",
+          "absolute h-10 w-10 sm:h-12 sm:w-12 rounded-full text-gray-600 sm:text-primary bg-transparent border-[2px] sm:border-[2.5px] border-gray-600 sm:border-primary  z-50 ",
           orientation === "horizontal"
             ? "right-0 -top-10 sm:-top-14 -translate-y-1/2"
             : "-bottom-4 left-1/2 -translate-x-1/2 rotate-90",
@@ -269,7 +269,7 @@ const FitnessCarouselNext = React.forwardRef(
         onClick={scrollNext}
         {...props}
       >
-        <FaChevronRight className="h-full w-full " />
+        <FaChevronRight className="controller-icon" /> {/* Increased to text-2xl */}
         <span className="sr-only">Next slide</span>
       </Button>
     );
