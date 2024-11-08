@@ -13,7 +13,7 @@ export default function OurAssociateMembers() {
         {/* Left Section: Title and Subtitle */}
         <div className="lg:w-2/5 sm:text-center lg:text-left">
           <SubHeading>
-            <span className="text-white">Who We Are</span>
+            <span className="text-white">We Are Here For You</span>
           </SubHeading>
           <Heading>
             <span className="text-opacity-40 text-white">Our</span> Associate
@@ -26,7 +26,7 @@ export default function OurAssociateMembers() {
           {/* Image Container */}
           <div className="w-full lg:w-1/2 overflow-hidden shadow-lg transform transition-transform duration-500 ease-in-out">
             <Image
-              src="/images/home/our-associate-members.png"
+              src="/images/home/our-associate-members.jpg"
               height={730}
               width={505}
               alt="Associate Member"
