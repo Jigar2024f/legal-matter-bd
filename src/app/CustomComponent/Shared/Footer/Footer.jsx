@@ -182,7 +182,7 @@ export default function Footer(params) {
       <hr className="max-w-screen-xl mx-auto my-4 sm:my-6 lg:my-8 2xl:my-10" />
       <div className="max-w-screen-xl mx-auto px-[5%] xl:px-0 flex flex-row justify-between items-center gap-2">
         <div className="flex justify-start items-center gap-2">
-          <h1 className="text-xs sm:text-sm lg:text-base 2xl:text-lg flex items-center gap-2 hover:text-secondary hover:underline transition-colors duration-300">
+          <h1 className="text-xs sm:text-sm lg:text-base 2xl:text-lg flex items-center gap-2 transition-colors duration-300">
             <span className="text-white text-opacity-80">Website made by</span>
             <Image
               src="/images/footer/Qrinux.png"
@@ -196,7 +196,7 @@ export default function Footer(params) {
         <a
           href="https://www.qrinux.com/"
           target="_blank"
-          className="text-xs sm:text-sm lg:text-base 2xl:text-lg"
+          className="text-xs sm:text-sm lg:text-base 2xl:text-lg hover:text-secondary hover:underline "
         >
           www.qrinux.com
         </a>

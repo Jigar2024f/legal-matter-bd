@@ -47,7 +47,7 @@ export default function Navbar() {
           <div className="flex justify-center items-center gap-3">
             <Link href={"/"}>
               <Image
-                src="/images/navbar/logo.png"
+                src="/images/navbar/logo.svg"
                 height={100}
                 width={90}
                 alt="logo"
@@ -86,10 +86,10 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Navbar */}
-        <div className="relative md:hidden z-50 flex justify-between items-center px-[5%] py-6 sm:py-8 bg-white overflow-x-hidden">
+        <div className="relative md:hidden z-50 flex justify-between items-center px-[5%] py-4 sm:py-8 bg-white overflow-x-hidden">
           <Link className="flex flex-col items-center" href="/">
             <Image
-              src="/images/navbar/logo.png"
+              src="/images/navbar/logo.svg"
               height={100}
               width={90}
               alt="logo"
