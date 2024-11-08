@@ -41,7 +41,7 @@ export default function Page() {
         const response = await axios.get(
           " https://ligalmatter.vercel.app/api/v1/blog",
         ); // Replace with your API endpoint
-    
+
         if (response.data.success) {
           const allBlogs = response.data.data;
           const selectedBlog = allBlogs.find((b) => b._id === id); // Find the selected blog
@@ -89,29 +89,33 @@ export default function Page() {
             href={`https://facebook.com/sharer/sharer.php?u=${src}`}
             target="_blank"
             rel="noopener noreferrer"
+            className="group"
           >
-            <FaFacebook className="text-2xl lg:text-3xl bg-black text-white rounded hover:text-primary hover:bg-white p-[3px] translate duration-500 border hover:border-black" />
+            <FaFacebook className="text-2xl lg:text-4xl bg-black text-white rounded p-1 transition-transform duration-500 transform  hover:text-primary hover:bg-white border hover:border-primary" />
           </a>
           <a
             href={`https://twitter.com/intent/tweet?url=${src}`}
             target="_blank"
             rel="noopener noreferrer"
+            className="group"
           >
-            <FaTwitter className="text-2xl lg:text-3xl bg-black text-white rounded hover:text-primary hover:bg-white p-[3px] translate duration-500 border hover:border-black" />
+            <FaTwitter className="text-2xl lg:text-4xl bg-black text-white rounded p-1 transition-transform duration-500 transform  hover:text-primary hover:bg-white border hover:border-primary" />
           </a>
           <a
             href={`https://www.linkedin.com/shareArticle?url=${src}`}
             target="_blank"
             rel="noopener noreferrer"
+            className="group"
           >
-            <FaLinkedin className="text-2xl lg:text-3xl bg-black text-white rounded hover:text-primary hover:bg-white p-[3px] translate duration-500 border hover:border-black" />
+            <FaLinkedin className="text-2xl lg:text-4xl bg-black text-white rounded p-1 transition-transform duration-500 transform  hover:text-primary hover:bg-white border hover:border-primary" />
           </a>
           <a
             href="https://www.instagram.com/yourprofile/"
             target="_blank"
             rel="noopener noreferrer"
+            className="group"
           >
-            <FaInstagramSquare className="text-2xl lg:text-3xl bg-black text-white rounded hover:text-primary hover:bg-white p-[3px] translate duration-500 border hover:border-black" />
+            <FaInstagramSquare className="text-2xl lg:text-4xl bg-black text-white rounded p-1 transition-transform duration-500 transform  hover:text-primary hover:bg-white border hover:border-primary" />
           </a>
         </div>
       </div>

@@ -52,7 +52,7 @@ export default function Footer(params) {
             href="https://www.epassport.gov.bd/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 hover:text-secondary hover:underline transition-colors duration-300"
           >
             <FaChevronRight /> E- passport
           </a>
@@ -60,7 +60,7 @@ export default function Footer(params) {
             href="https://www.brta.gov.bd/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 hover:text-secondary hover:underline transition-colors duration-300"
           >
             <FaChevronRight /> BRTA
           </a>
@@ -68,7 +68,7 @@ export default function Footer(params) {
             href="https://www.ldtax.gov.bd/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 hover:text-secondary hover:underline transition-colors duration-300"
           >
             <FaChevronRight /> IDtax
           </a>
@@ -76,7 +76,7 @@ export default function Footer(params) {
             href="https://www.barcouncil.gov.bd/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 hover:text-secondary hover:underline transition-colors duration-300"
           >
             <FaChevronRight /> Bangladesh Bar Council
           </a>
@@ -84,7 +84,7 @@ export default function Footer(params) {
             href="https://www.ibanet.org/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 hover:text-secondary hover:underline transition-colors duration-300"
           >
             <FaChevronRight /> International Bar Association
           </a>
@@ -98,7 +98,7 @@ export default function Footer(params) {
             href="https://www.supremecourt.gov.bd/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 hover:text-secondary hover:underline transition-colors duration-300"
           >
             <FaChevronRight /> Supreme Court of Bangladesh
           </a>
@@ -106,7 +106,7 @@ export default function Footer(params) {
             href="https://lawjusticediv.gov.bd/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 hover:text-secondary hover:underline transition-colors duration-300"
           >
             <FaChevronRight /> Ministry of Law
           </a>
@@ -114,7 +114,7 @@ export default function Footer(params) {
             href="https://mha.gov.bd/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 hover:text-secondary hover:underline transition-colors duration-300"
           >
             <FaChevronRight /> Ministry of Home Affairs
           </a>
@@ -122,7 +122,7 @@ export default function Footer(params) {
             href="https://nbr.gov.bd/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 hover:text-secondary hover:underline transition-colors duration-300"
           >
             <FaChevronRight /> National Board of Revenue
           </a>
@@ -130,7 +130,7 @@ export default function Footer(params) {
             href="https://lawjusticediv.gov.bd/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 hover:text-secondary hover:underline transition-colors duration-300"
           >
             <FaChevronRight /> Law and Justice Division
           </a>
@@ -146,7 +146,7 @@ export default function Footer(params) {
                 height={730}
                 width={505}
                 alt="Home page banner image"
-                className="h-fit w-full object-cover object-center"
+                className="h-fit w-full object-cover object-center transition-transform transform hover:scale-110 hover:rotate-3"
                 priority
               />
             </figure>
@@ -156,7 +156,7 @@ export default function Footer(params) {
                 height={730}
                 width={505}
                 alt="Home page banner image"
-                className="h-fit w-full object-cover object-center"
+                className="h-fit w-full object-cover object-center transition-transform transform hover:scale-110 hover:rotate-3"
                 priority
               />
             </figure>
@@ -166,23 +166,23 @@ export default function Footer(params) {
                 height={730}
                 width={505}
                 alt="Home page banner image"
-                className="h-fit w-full object-cover object-center"
+                className="h-fit w-full object-cover object-center transition-transform transform hover:scale-110 hover:rotate-3"
                 priority
               />
             </figure>
           </div>
         </div>
         <div className="flex items-end justify-center sm:justify-end w-full gap-3 lg:gap-4 my-5 sm:my-0">
-          <FaFacebook className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
-          <FaTwitter className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
-          <FaLinkedin className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
-          <FaInstagramSquare className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-black p-[3px] translate duration-500 border hover:border-white cursor-pointer" />
+          <FaFacebook className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-blue-600 p-[3px] transition duration-500 border hover:border-blue-600 cursor-pointer" />
+          <FaTwitter className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-blue-400 p-[3px] transition duration-500 border hover:border-blue-400 cursor-pointer" />
+          <FaLinkedin className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-blue-700 p-[3px] transition duration-500 border hover:border-blue-700 cursor-pointer" />
+          <FaInstagramSquare className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[3px] transition duration-500 border hover:border-yellow-500 cursor-pointer" />
         </div>
       </div>
       <hr className="max-w-screen-xl mx-auto my-4 sm:my-6 lg:my-8 2xl:my-10" />
       <div className="max-w-screen-xl mx-auto px-[5%] xl:px-0 flex flex-row justify-between items-center gap-2">
         <div className="flex justify-start items-center gap-2">
-          <h1 className="text-xs sm:text-sm lg:text-base 2xl:text-lg flex items-center gap-2">
+          <h1 className="text-xs sm:text-sm lg:text-base 2xl:text-lg flex items-center gap-2 hover:text-secondary hover:underline transition-colors duration-300">
             <span className="text-white text-opacity-80">Website made by</span>
             <Image
               src="/images/footer/Qrinux.png"

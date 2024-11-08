@@ -13,9 +13,9 @@ export default function Banner() {
   };
 
   return (
-    <section className="">
+    <section className="md:mt-5">
       <div className="mx-[5%]">
-        <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 justify-between items-center gap-5 lg:gap-8">
+        <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 justify-between items-center gap-5 lg:gap-8 ">
           <header>
             <h1 className="text-5xl sm:text-6xl lg:text-6xl 2xl:text-7xl font-extrabold mt-7 lg:mt-10">
               Your Problem,
@@ -24,7 +24,7 @@ export default function Banner() {
               of solving it is ours
             </h1>
           </header>
-          <div>
+          <div className="lg:mt-5 2xl:mt-10">
             <Description>
               Legal Matter BD is here to help you with your legal issues. Our
               experienced team works by your side, making the process simpler,
@@ -33,9 +33,10 @@ export default function Banner() {
             </Description>
             <button
               onClick={scrollToContact}
-              className="text-base sm:text-lg px-6 py-2 border border-primary rounded-full flex justify-center items-center gap-1 mt-4 lg:mt-6 hover:bg-primary hover:text-white transition-transform duration-500 ease-in-out"
+              className="text-base sm:text-lg px-6 py-2 border border-primary rounded-full flex justify-center items-center gap-1 mt-4 lg:mt-6 hover:bg-primary hover:text-white transition-transform duration-500 ease-in-out group"
             >
-              Let’s Talk <FaArrowRight className="text-sm" />
+              Let’s Talk{" "}
+              <FaArrowRight className="text-sm transition-transform duration-300 ease-in-out group-hover:translate-x-1 group-hover:rotate-45" />
             </button>
           </div>
         </div>

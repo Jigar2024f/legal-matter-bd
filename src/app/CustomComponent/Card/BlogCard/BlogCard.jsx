@@ -69,8 +69,9 @@ export default function BlogCard({ blog }) {
 
         <div>
           <Link href={`/blogs/${_id}`}>
-            <button className="mt-4 text-xs sm:text-sm px-4 py-1 border border-primary rounded-full flex justify-center items-center gap-1 hover:bg-primary hover:text-white transition-transform duration-500 ease-in-out">
-              আরও পড়ুন <FaArrowRight className="text-xs -rotate-45" />
+            <button className="mt-4 text-xs sm:text-sm px-4 py-1 border border-primary rounded-full flex justify-center items-center gap-1 hover:bg-primary hover:text-white transition-transform duration-500 ease-in-out group">
+              আরও পড়ুন{" "}
+              <FaArrowRight className="text-xs transition-transform duration-300 ease-in-out -rotate-45 group-hover:rotate-0" />
             </button>
           </Link>
         </div>

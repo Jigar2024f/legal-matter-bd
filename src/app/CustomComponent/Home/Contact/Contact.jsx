@@ -20,9 +20,12 @@ export default function Contact() {
           Just a Call Away
         </h1>
         <div className="flex justify-center items-center gap-2 lg:gap-4">
-          <FaPhoneAlt className="text-white bg-black rounded-full p-[7px] sm:p-[10px] lg:p-3 2xl:p-[15px] text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl" />{" "}
+          <FaPhoneAlt className="text-white bg-black rounded-full p-[7px] sm:p-[10px] lg:p-3 2xl:p-[15px] text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl transition-transform transform hover:scale-110 " />
           <p className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl">
-            <a href="tel:+8801712581787" className="text-inherit">
+            <a
+              href="tel:+8801712581787"
+              className="text-inherit font-extrabold hover:text-gray-600 transition-colors duration-300"
+            >
               01712-581787
             </a>
           </p>
@@ -31,7 +34,7 @@ export default function Contact() {
 
       <section className="max-w-screen-xl mx-auto px-[5%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 text-start sm:mt-16">
         {/* Chamber Address */}
-        <article className="p-5 bg-lightGray rounded-sm">
+        <article className="p-5 bg-lightGray rounded-sm transition-shadow hover:shadow-lg hover:bg-gray-100">
           <h2 className="text-lg font-semibold text-primary">
             Chamber Address
           </h2>
@@ -43,7 +46,7 @@ export default function Contact() {
           </address>
         </article>
         {/* Office Address */}
-        <article className="p-5 bg-lightGray rounded-sm">
+        <article className="p-5 bg-lightGray rounded-sm transition-shadow hover:shadow-lg hover:bg-gray-100">
           <h2 className="text-lg font-semibold text-primary">Office Address</h2>
           <div className="h-[2px] w-full bg-mediumGray my-2" />
           <address className="not-italic">
@@ -55,7 +58,7 @@ export default function Contact() {
         </article>
 
         {/* Home Address */}
-        <article className="p-5 bg-lightGray rounded-sm">
+        <article className="p-5 bg-lightGray rounded-sm transition-shadow hover:shadow-lg hover:bg-gray-100">
           <h2 className="text-lg font-semibold text-primary">Home Address</h2>
           <div className="h-[2px] w-full bg-mediumGray my-2" />
           <address className="not-italic">
