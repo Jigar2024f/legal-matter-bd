@@ -33,7 +33,7 @@ export const metadata = {
     url: "https://legalmatterbd.com",
     images: [
       {
-        url: "/public/openGraph.jpg",
+        url: "/openGraph.jpg",
         alt: "Legal Matter BD - Reliable Legal Solutions",
         width: 1200,
         height: 630,
@@ -51,7 +51,7 @@ export const metadata = {
     card: "summary_large_image",
     images: [
       {
-        url: "/public/openGraph.jpg",
+        url: "/openGraph.jpg",
         alt: "Legal Matter BD Legal Services",
       },
     ],
@@ -71,7 +71,7 @@ export const metadata = {
       "https://www.linkedin.com/company/legalmatterbd",
       "https://legalmatterbd.com/",
     ],
-    logo: "/assets/images/legal_matter_bd_logo.png",
+    logo: "/images/navbar/logo.svg",
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+8801712-581787",
