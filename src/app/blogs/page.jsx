@@ -69,7 +69,7 @@ if(loading){
           <Heading>
             <span className="text-secondary">Our</span> Blogs
           </Heading>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 my-14 sm:my-16 lg:my-20 2xl:my-24 text-start">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-14 sm:my-16 lg:my-20 2xl:my-24 text-start">
             {currentBlogs.map((blog) => (
               <BlogCard key={blog.id} blog={blog} />
             ))}

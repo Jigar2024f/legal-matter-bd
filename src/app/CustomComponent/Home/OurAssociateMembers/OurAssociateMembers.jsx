@@ -62,7 +62,7 @@ export default function OurAssociateMembers() {
               Syed Jigar Saad Alam
             </h1>
             <div className="space-y-1.5  sm:text-2xl lg:text-base">
-              <p>LL.B (Hon&#39;s), LL.M (Master’s)</p>
+              <p>LL.B (Hon&#39;s), LL.M (Master’s),</p>
               <p></p>
               <p>Sylhet International University.</p>
               <p>Advocate, Judge&#39;s Court, Sylhet.</p>

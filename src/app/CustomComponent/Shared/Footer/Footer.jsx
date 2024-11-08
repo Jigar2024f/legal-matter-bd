@@ -11,7 +11,7 @@ import { MdEmail } from "react-icons/md";
 
 export default function Footer(params) {
   return (
-    <footer className="bg-primary text-white mt-12 sm:mt-14 lg:mt-16 2xl:mt-20  pt-12 pb-4 md:pb-10 sm:pt-14 lg:pt-16 2xl:pt-20">
+    <footer className="bg-primary text-white mt-12 sm:mt-14 lg:mt-16 2xl:mt-20  pt-12 pb-4 md:pb-10 sm:pt-14 lg:pt-16 2xl:pt-20 px-[5%]">
       <div className=""></div>
       <div className="max-w-screen-xl mx-auto px-[5%] xl:px-0 flex flex-col sm:flex-row justify-between items-start gap-5">
         <div className="font-medium space-y-5">
