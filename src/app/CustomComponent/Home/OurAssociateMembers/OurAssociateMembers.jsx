@@ -43,7 +43,7 @@ export default function OurAssociateMembers() {
         </div> */}
 
         {/* Right Section: Member Profile Card */}
-        <div className="lg:w-3/5 flex flex-col lg:flex-row  gap-6 lg:gap-10 bg-white bg-opacity-5 backdrop-blur-md p-5 md:p-8 rounded-lg shadow-xl  transition-shadow duration-300 ease-in-out transform ">
+        <div className="lg:w-3/5 flex flex-col lg:flex-row  gap-6 lg:gap-10 items-start bg-white bg-opacity-5 backdrop-blur-md p-5 sm:p-8 rounded-lg shadow-xl  transition-shadow duration-300 ease-in-out transform ">
           {/* Image Container */}
           <div className="w-full lg:w-1/2 overflow-hidden shadow-lg transform transition-transform duration-500 ease-in-out">
             <Image
@@ -61,15 +61,15 @@ export default function OurAssociateMembers() {
             <h1 className=" font-semibold text-2xl sm:text-4xl lg:text-2xl  mb-3">
               Syed Jigar Saad Alam
             </h1>
-            <div className="space-y-1  sm:text-2xl lg:text-base">
-              <p>LL.B (Hon&#39;s)</p>
-              <p>LL.M (Master’s)</p>
-              <p>Sylhet International University</p>
-              <p>Advocate</p>
-              <p>Judge&#39;s Court, Sylhet</p>
-              <p>Apprentice</p>
-              <p>Supreme Court of Bangladesh</p>
-              <p>High Court Division</p>
+            <div className="space-y-1.5  sm:text-2xl lg:text-base">
+              <p>LL.B (Hon&#39;s), LL.M (Master’s)</p>
+              <p></p>
+              <p>Sylhet International University.</p>
+              <p>Advocate, Judge&#39;s Court, Sylhet.</p>
+
+              <p>
+                Apprentice, Supreme Court of Bangladesh, High Court Division
+              </p>
             </div>
           </div>
         </div>
