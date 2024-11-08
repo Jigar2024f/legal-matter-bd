@@ -19,7 +19,7 @@ export default function Banner() {
           <header>
             <h1 className="text-5xl sm:text-6xl lg:text-6xl 2xl:text-7xl font-extrabold mt-7 lg:mt-10">
               Your Problem,
-              <br className="hidden lg:block" />
+              <br />
               The <span className="text-secondary">headache </span>
               of solving it is ours
             </h1>
