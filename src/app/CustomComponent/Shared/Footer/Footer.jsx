@@ -18,7 +18,7 @@ export default function Footer(params) {
           <div className="flex justify-between items-start gap-3 w-full ">
             <div className="block">
               <Image
-                src="/images/footer/logo.png"
+                src="/images/footer/logo.svg"
                 height={100}
                 width={90}
                 alt="logo"
