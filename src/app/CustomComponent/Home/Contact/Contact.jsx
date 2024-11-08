@@ -23,7 +23,7 @@ export default function Contact() {
           <FaPhoneAlt className="text-white bg-black rounded-full p-[7px] sm:p-[10px] lg:p-3 2xl:p-[15px] text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl" />{" "}
           <p className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl">
             <a href="tel:+8801712581787" className="text-inherit">
-              01712581787
+              01712-581787
             </a>
           </p>
         </div>
