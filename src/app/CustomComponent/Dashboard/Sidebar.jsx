@@ -52,13 +52,13 @@ import { usePathname, useRouter } from "next/navigation";
 
 const data = {
   user: {
-    name: "Jigar Alom",
-    email: "s.s.a.jigar@gmail.com",
+    name: "Syed Jigar Saad Alam",
+    email: "demo@gmail.com",
     avatar: "/public/images/navbar/logo.png",
   },
   teams: [
     {
-      name: "LegalMatterBD",
+      name: "Legal Matter BD",
       logo: GalleryVerticalEnd,
       plan: "Admin dashboard",
     },
@@ -72,7 +72,7 @@ const data = {
     {
       title: "All Blogs",
       url: "/dashboard/all-blog",
-      icon: UsersRound,
+      icon: LayoutDashboard,
     },
   ],
 };
@@ -84,7 +84,7 @@ export default function AdminDashboardSidebar({ children }) {
     try {
       const response = await axios.post(
         " https://ligalmatter.vercel.app/api/v1/auth/logout",
-        { withCredentials: true }
+        { withCredentials: true },
       );
 
       if (response.status === 200) {
@@ -169,7 +169,7 @@ export default function AdminDashboardSidebar({ children }) {
                         src={data.user.avatar}
                         alt={data.user.name}
                       />
-                      <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                      <AvatarFallback className="rounded-lg">SJ</AvatarFallback>
                     </Avatar>
                     <div className="grid flex-1 text-left text-sm leading-tight">
                       <span className="truncate font-semibold">
@@ -196,7 +196,7 @@ export default function AdminDashboardSidebar({ children }) {
                           alt={data.user.name}
                         />
                         <AvatarFallback className="rounded-lg">
-                          AN
+                          SJ
                         </AvatarFallback>
                       </Avatar>
                       <div className="grid flex-1 text-left text-sm leading-tight">
@@ -212,11 +212,13 @@ export default function AdminDashboardSidebar({ children }) {
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup></DropdownMenuGroup>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem className="cursor-pointer">
-                    <LogOut />
-                    {/* Log out */}
-                    <button onClick={handleLogout}>Logout</button>
-                  </DropdownMenuItem>
+                  <button className="w-full" onClick={handleLogout}>
+                    <DropdownMenuItem className="cursor-pointer">
+                      <LogOut />
+                      {/* Log out */}
+                      Logout
+                    </DropdownMenuItem>
+                  </button>
                 </DropdownMenuContent>
               </DropdownMenu>
             </SidebarMenuItem>

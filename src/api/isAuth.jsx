@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { redirect, usePathname } from "next/navigation";
+import Loading from "@/app/CustomComponent/Shared/Loading";
 
 const isAuth = (Component) => {
   return function IsAuth(props) {
@@ -32,7 +33,7 @@ const isAuth = (Component) => {
     }, [path]);
 
     if (isLoading) {
-      return <div>Loading...</div>;
+      return <div><Loading/></div>;
     }
 
     if (!auth) {

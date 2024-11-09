@@ -58,9 +58,9 @@ const Createblog = () => {
   };
 
   return (
-    <section className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="w-full max-w-6xl p-8 bg-white text-gray-900 rounded-lg shadow-lg mx-[5%]">
-        <h2 className="text-2xl font-semibold text-center mb-6">
+    <section className="flex justify-center items-center min-h-screen bg-black p-4">
+      <div className="w-full max-w-4xl bg-white text-black rounded-lg shadow-lg p-6 md:p-10">
+        <h2 className="text-3xl font-bold text-center mb-8">
           Create a New Blog
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -68,7 +68,7 @@ const Createblog = () => {
           <div>
             <label
               htmlFor="title_english"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-base font-medium mb-1"
             >
               Title (English)
             </label>
@@ -78,7 +78,7 @@ const Createblog = () => {
               placeholder="Enter title in English"
               value={formData.title_english}
               onChange={handleChange}
-              className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-primary focus:ring-primary"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
               required
             />
           </div>
@@ -87,7 +87,7 @@ const Createblog = () => {
           <div>
             <label
               htmlFor="title_bangla"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-base font-medium mb-1"
             >
               Title (Bangla)
             </label>
@@ -97,17 +97,14 @@ const Createblog = () => {
               placeholder="Enter title in Bangla"
               value={formData.title_bangla}
               onChange={handleChange}
-              className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-primary focus:ring-primary"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
               required
             />
           </div>
 
           {/* Image URL */}
           <div>
-            <label
-              htmlFor="image"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="image" className="block text-base font-medium mb-1">
               Image URL
             </label>
             <input
@@ -116,7 +113,7 @@ const Createblog = () => {
               placeholder="Enter image URL"
               value={formData.image}
               onChange={handleChange}
-              className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-primary focus:ring-primary"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
               required
             />
           </div>
@@ -125,7 +122,7 @@ const Createblog = () => {
           <div>
             <label
               htmlFor="description_english"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-base font-medium mb-1"
             >
               Description (English)
             </label>
@@ -134,8 +131,8 @@ const Createblog = () => {
               placeholder="Enter description in English"
               value={formData.description_english}
               onChange={handleChange}
-              className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-primary focus:ring-primary"
-              rows="3"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+              rows="4"
               required
             />
           </div>
@@ -144,7 +141,7 @@ const Createblog = () => {
           <div>
             <label
               htmlFor="description_bangla"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-base font-medium mb-1"
             >
               Description (Bangla)
             </label>
@@ -153,8 +150,8 @@ const Createblog = () => {
               placeholder="Enter description in Bangla"
               value={formData.description_bangla}
               onChange={handleChange}
-              className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-primary focus:ring-primary"
-              rows="3"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+              rows="4"
               required
             />
           </div>
@@ -163,7 +160,7 @@ const Createblog = () => {
           <div>
             <label
               htmlFor="category"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-base font-medium mb-1"
             >
               Category
             </label>
@@ -171,7 +168,7 @@ const Createblog = () => {
               name="category"
               value={formData.category}
               onChange={handleChange}
-              className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-primary focus:ring-primary"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
               required
             >
               <option value="" disabled>
@@ -184,12 +181,14 @@ const Createblog = () => {
           </div>
 
           {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full p-3 mt-4 text-white bg-primary rounded-lg hover:bg-primary-dark transition"
-          >
-            Create Blog
-          </button>
+          <div className="text-center">
+            <button
+              type="submit"
+              className="w-full sm:w-auto bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition duration-300"
+            >
+              Create Blog
+            </button>
+          </div>
         </form>
       </div>
     </section>

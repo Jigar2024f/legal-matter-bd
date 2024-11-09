@@ -21,15 +21,11 @@ const Login = () => {
     try {
       const response = await axios.post(
         "https://ligalmatter.vercel.app/api/v1/auth/login",
-        {
-          email,
-          password,
-        },
-        { withCredentials: true }
+        { email, password },
+        { withCredentials: true },
       );
 
       const { data } = response;
- 
       setSuccess(data.message);
       router.push("/dashboard");
     } catch (err) {
@@ -41,9 +37,14 @@ const Login = () => {
   };
 
   return (
-    <section className="flex justify-center items-center h-screen bg-gray-100">
+    <section className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-blue-50 px-4">
       <div className="w-full max-w-md p-8 bg-white text-gray-900 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+        <h2 className="text-3xl font-bold text-center mb-6 text-blue-600">
+          Welcome Back
+        </h2>
+        <p className="text-center text-sm text-gray-500 mb-6">
+          Please log in to your account to continue
+        </p>
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email */}
           <div>
@@ -51,16 +52,16 @@ const Login = () => {
               htmlFor="email"
               className="block text-sm font-medium text-gray-700"
             >
-              Email
+              Email Address
             </label>
             <input
               type="email"
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
+              placeholder="Enter your email"
               required
-              className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-primary focus:ring-primary"
+              className="w-full p-3 mt-1 text-sm border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
 
@@ -79,25 +80,30 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
               required
-              className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-primary focus:ring-primary"
+              className="w-full p-3 mt-1 text-sm border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full p-3 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition"
-            disabled={loading} // Disable button when loading
+            className="w-full py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition duration-300 font-medium text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={loading}
           >
-            {loading ? "Logging In..." : "Login"} {/* Conditional text */}
+            {loading ? "Logging In..." : "Login"}
           </button>
         </form>
 
-        {/* Display success or error messages */}
-        {error && <div className="mt-4 text-red-500 text-center">{error}</div>}
-        {success && (
-          <div className="mt-4 text-green-500 text-center">{success}</div>
+        {/* Success or Error Messages */}
+        {error && (
+          <div className="mt-4 text-center text-sm text-red-600">{error}</div>
         )}
+        {success && (
+          <div className="mt-4 text-center text-sm text-green-600">
+            {success}
+          </div>
+        )}
+
       </div>
     </section>
   );
