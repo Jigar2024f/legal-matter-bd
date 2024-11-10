@@ -5,7 +5,9 @@
 body {
   font-family: "Inter Tight", sans-serif;
 }
-
+html{
+  scroll-behavior: smooth;
+}
 .noto-serif-bengali-font {
   font-family: var(--font-noto-serif-bengali), serif;
 }

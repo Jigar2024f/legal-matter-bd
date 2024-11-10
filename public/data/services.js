@@ -28,7 +28,34 @@ export const servicesData = [
       bn: "<p>দেওয়ানী মামলা কি? কেনো দায়ের করতে হয়?</p><p>কোন বিষয়ে অধিকারের দাবি বা ক্ষতিপূরণের দাবির জন্য যে মামলা করা হয় তাকে দেওয়ানী মামলা বলে। </br>দেওয়ানী মামলাসমূহ:</p>",
     },
     options: [
-      // Options content remains the same...
+      {
+        en: "Dower, maintenance, divorce, family relationship restoration, adoption, inheritance, child custody, etc.",
+        bn: "দেনমোহর, ভরণপোষণ, বিবাহ বিচ্ছেদ/ তালাক (ডিভোর্স), পারিবারিক সম্পর্কের পুনরুদ্ধার, দত্তক, উত্তরাধিকার, সন্তানের হেফাজত ইত্যাদি।",
+      },
+      {
+        en: "Contract disputes such as claims for money owed, enforcing contract terms, etc.",
+        bn: "চুক্তি নিয়ে মামলা; যেমন: টাকা পাওয়ার মামলা, চুক্তির শর্ত মানার মামলা ইত্যাদি।",
+      },
+      {
+        en: "Cases involving possession or rights over property.",
+        bn: "সম্পত্তি দখল বা অধিকার নিয়ে মামলা।",
+      },
+      {
+        en: "Permanent or temporary injunctions.",
+        bn: "স্থায়ী বা অস্থায়ী নিষেধাজ্ঞার (ইনজাংশন) মামলা।",
+      },
+      {
+        en: "Correction or cancellation of documents if errors are found.",
+        bn: "দলিল সংশোধন (ভুল থাকলে ঠিক করা) ও বাতিল করার মামলা।",
+      },
+      {
+        en: "Land-related cases such as mutation, title clearance, etc.",
+        bn: "জমি-জমা নিযে আরও মামলা; যেমন: নামজারি (মিউটেশন), নাম খারিজ ইত্যাদি।",
+      },
+      {
+        en: "Cases under the Prevention and Remedy of Land Offenses Act, 2023.",
+        bn: "ভূমি অপরাধ প্রতিরোধ ও প্রতিকার আইন, ২০২৩ এর আওতায় ফৌজদারি মামলা।",
+      },
     ],
   },
   {
@@ -44,7 +71,62 @@ export const servicesData = [
       bn: "<p>ফৌজদারী মামলা কি? কেন ফৌজদারি মামলা দায়ের করতে হয়?</p></br><p>ব্যক্তি, সমাজ ও রাষ্ট্রের শান্তি-শৃঙ্খলা নষ্ট করা বা কাউকে আঘাত বা হত্যা করার ফলে যে মামলা হয় সেগুলো ফৌজদারী মামলা।</br> ফৌজদারি মামলাসমূহ:</p>",
     },
     options: [
-      // Options content remains the same...
+      {
+        en: "Theft, robbery, mugging.",
+        bn: "চুরি, ডাকাতি, ছিনতাই।",
+      },
+      {
+        en: "Rape.",
+        bn: "ধর্ষণ।",
+      },
+      {
+        en: "Defamation.",
+        bn: "মানহানি।",
+      },
+      {
+        en: "Acid throwing.",
+        bn: "এসিড নিক্ষেপ।",
+      },
+      {
+        en: "Dowry demands and dowry-related abuse.",
+        bn: "যৌতুক দাবী, যৌতুকের জন্য নির্যাতন।",
+      },
+      {
+        en: "Crimes related to illegal weapons.",
+        bn: "অবৈধ অস্ত্র সংক্রান্ত অপরাধ।",
+      },
+      {
+        en: "Physical assault or any form of bodily harm.",
+        bn: "মারপিট বা যে কোন শারীরিক আঘাত।",
+      },
+      {
+        en: "Human trafficking.",
+        bn: "মানব পাচার।",
+      },
+      {
+        en: "Murder.",
+        bn: "হত্যা।",
+      },
+      {
+        en: "Abetment of suicide.",
+        bn: "আত্মহত্যায় প্ররোচনা।",
+      },
+      {
+        en: "Fraud and forgery.",
+        bn: "প্রতারণা, জালিয়াতি।",
+      },
+      {
+        en: "Drug-related offenses.",
+        bn: "মাদক সংক্রান্ত অপরাধ।",
+      },
+      {
+        en: "Pornography.",
+        bn: "পর্নোগ্রাফি।",
+      },
+      {
+        en: "Cyber crimes and cases under various tribunals.",
+        bn: "সাইবার অপরাধ সহ বিভিন্ন ট্রাইবুনালের মামলা।",
+      },
     ],
   },
   {
