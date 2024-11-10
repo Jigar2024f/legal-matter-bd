@@ -6,6 +6,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { servicesData } from "../../../../../../public/data/services";
 import QuillEditor from "../../Component/QuillEditor";
+import Image from "next/image";
+
 const EditBlog = ({ params }) => {
   const services = servicesData;
   const { id } = params;
@@ -20,6 +22,7 @@ const EditBlog = ({ params }) => {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -27,10 +30,11 @@ const EditBlog = ({ params }) => {
       if (id) {
         try {
           const response = await axios.get(
-            ` https://ligalmatter.vercel.app/api/v1/blog/${id}`
+            `https://ligalmatter.vercel.app/api/v1/blog/${id}`
           );
           if (response.data.success) {
             setFormData(response.data.data);
+            setPreviewImage(response.data.data.image); // Set the initial image preview
           } else {
             setError("Failed to load blog data");
           }
@@ -52,6 +56,12 @@ const EditBlog = ({ params }) => {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({ ...formData, image: file });
+    setPreviewImage(URL.createObjectURL(file)); // Set preview URL for selected image
   };
 
   const handleImageUpload = async (image) => {
@@ -83,7 +93,6 @@ const EditBlog = ({ params }) => {
     e.preventDefault();
     setLoading(true);
 
-    // If an image is provided, upload it first
     let uploadedImageUrl = formData.image;
     if (typeof formData.image === "object") {
       uploadedImageUrl = await handleImageUpload(formData.image);
@@ -91,14 +100,14 @@ const EditBlog = ({ params }) => {
 
     if (!uploadedImageUrl) {
       setLoading(false);
-      return; // If image upload fails, stop form submission
+      return;
     }
 
     const updatedData = { ...formData, image: uploadedImageUrl };
 
     try {
       const response = await axios.put(
-        ` https://ligalmatter.vercel.app/api/v1/blog/${id}`,
+        `https://ligalmatter.vercel.app/api/v1/blog/${id}`,
         updatedData,
         {
           withCredentials: true,
@@ -121,7 +130,7 @@ const EditBlog = ({ params }) => {
   if (loading)
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-black"></div>
       </div>
     );
   if (error) return <div className="text-center text-red-500">{error}</div>;
@@ -181,11 +190,20 @@ const EditBlog = ({ params }) => {
               type="file"
               name="image"
               accept="image/*"
-              onChange={(e) =>
-                setFormData({ ...formData, image: e.target.files[0] })
-              }
+              onChange={handleImageChange}
               className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-primary focus:ring-primary"
             />
+            {previewImage && (
+              <div className="mt-4">
+                <Image
+                  src={previewImage}
+                  alt="Image Preview"
+                  className="h-40 w-fit rounded-md shadow-md"
+                  width={160} // You can set the width and height according to your needs
+                  height={160}
+                />
+              </div>
+            )}
           </div>
 
           {/* Description (English) */}
@@ -269,13 +287,12 @@ const EditBlog = ({ params }) => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full p-3 mt-4 text-white bg-primary rounded-lg hover:bg-primary-dark transition"
-            disabled={loading} // Disable button when loading
+            disabled={loading}
+            className="w-full p-3 mt-6 text-white bg-primary rounded-md hover:bg-opacity-90 transition duration-300 ease-in-out"
           >
             {loading ? "Updating..." : "Update Blog"}
           </button>
         </form>
-        {/* Toast Container */}
         <ToastContainer />
       </div>
     </section>

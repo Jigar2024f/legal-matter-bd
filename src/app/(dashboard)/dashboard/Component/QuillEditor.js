@@ -13,7 +13,7 @@ const QuillEditor = ({ value, onChange }) => {
       value={value}
       onChange={onChange}
       theme="snow"
-      className='w-full h-40 mb-14'
+      className='w-full h-40 mb-20 sm:mb-16'
     />
   );
 };

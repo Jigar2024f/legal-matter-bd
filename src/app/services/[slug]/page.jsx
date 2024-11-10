@@ -8,12 +8,14 @@ import { BreadcrumbSection } from "../Component/BreadcrumbSection/BreadcrumbSect
 import InputForm from "@/app/CustomComponent/Home/Contact/InputForm";
 
 export default function Page() {
-  const { id } = useParams();
+  const { slug } = useParams();
+  console.log(slug);
 
 
   // Find the correct services using the slug
-  const service = servicesData.find((b) => b.id === id);
-  const otherServices = servicesData.filter((b) => b.id !== id);
+  const service = servicesData.find((b) => b.slug === slug);
+  console.log(service);
+  const otherServices = servicesData.filter((b) => b.slug !== slug);
 
   const randomServices = otherServices
     .sort(() => 0.5 - Math.random())

@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -7,10 +6,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { servicesData } from "../../../../public/data/services";
 import QuillEditor from "./Component/QuillEditor";
+import Image from "next/image";
 
 const CreateBlog = () => {
   const [contentEnglish, setContentEnglish] = useState("");
   const [contentBangla, setContentBangla] = useState("");
+  const [imagePreview, setImagePreview] = useState(null); // State for image preview
   const services = servicesData;
   const [formData, setFormData] = useState({
     title_english: "",
@@ -33,7 +34,6 @@ const CreateBlog = () => {
   }, [contentEnglish, contentBangla]);
 
   const handleImageUpload = async (imageFile) => {
-
     const formData = new FormData();
     formData.append("image", imageFile);
     const apiKey = "4c33fed168c7c87fe3c27db1cd78341b";
@@ -49,7 +49,6 @@ const CreateBlog = () => {
           withCredentials: false,
         }
       );
-    
       return response.data.data.display_url;
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -57,21 +56,6 @@ const CreateBlog = () => {
       return null;
     }
   };
-
-  // const handleImageUpload = async (imageFile) => {
-  // const formData = new FormData();
-  // formData.append("image", imageFile);
-
-  // try {
-  //   const response =
-  //     "https://cdn.gobankingrates.com/wp-content/uploads/2019/01/Lowes-iStock-458677805.jpg";
-  //   return response;
-  // } catch (error) {
-  //   console.error("Image upload failed", error);
-  //   toast.error("Image upload failed. Please try again.");
-  //   return null;
-  // }
-  // };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -84,9 +68,11 @@ const CreateBlog = () => {
   const handleFileChange = (e) => {
     const { name, files } = e.target;
     if (files && files[0]) {
+      const file = files[0];
+      setImagePreview(URL.createObjectURL(file)); // Generate image preview
       setFormData((prev) => ({
         ...prev,
-        [name]: files[0],
+        [name]: file,
       }));
     }
   };
@@ -105,11 +91,10 @@ const CreateBlog = () => {
       ...formData,
       image: uploadedImageUrl,
     };
-  
 
     try {
       const response = await axios.post(
-        " https://ligalmatter.vercel.app/api/v1/blog",
+        "https://ligalmatter.vercel.app/api/v1/blog",
         updatedFormData,
         {
           withCredentials: true,
@@ -148,15 +133,10 @@ const CreateBlog = () => {
   return (
     <section className="flex justify-center items-center bg-gray-100">
       <div className="w-full max-w-6xl p-8 bg-white text-gray-900 rounded-lg shadow-lg mx-[5%]">
-        <h2 className="text-2xl font-semibold text-center mb-6">
-          Create a New Blog
-        </h2>
+        <h2 className="text-2xl font-semibold text-center mb-6">Create a New Blog</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label
-              htmlFor="title_english"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="title_english" className="block text-sm font-medium text-gray-700">
               Title (English)
             </label>
             <input
@@ -171,10 +151,7 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="title_bangla"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="title_bangla" className="block text-sm font-medium text-gray-700">
               Title (Bangla)
             </label>
             <input
@@ -189,10 +166,7 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="image"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="image" className="block text-sm font-medium text-gray-700">
               Upload Image
             </label>
             <input
@@ -202,28 +176,30 @@ const CreateBlog = () => {
               className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:border-primary focus:ring-primary"
               required
             />
+            {imagePreview && (
+              <div className="mt-4">
+                <Image
+                  src={imagePreview}
+                  alt="Image Preview"
+                  className="h-40 w-fit rounded-md shadow-md"
+                  width={160} // You can set the width and height according to your needs
+                  height={160}
+                />
+              </div>
+            )}
           </div>
 
           <div>
-            <label
-              htmlFor="description_english"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
+            <label htmlFor="description_english" className="block text-sm font-medium text-gray-700 mb-1">
               Description (English)
             </label>
             <div className="mb-5">
-              <QuillEditor
-                value={contentEnglish}
-                onChange={setContentEnglish}
-              />
+              <QuillEditor value={contentEnglish} onChange={setContentEnglish} />
             </div>
           </div>
 
           <div>
-            <label
-              htmlFor="description_bangla"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
+            <label htmlFor="description_bangla" className="block text-sm font-medium text-gray-700 mb-1">
               Description (Bangla)
             </label>
             <div className="mb-5">
@@ -232,10 +208,7 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="category_english"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="category_english" className="block text-sm font-medium text-gray-700">
               Category (English)
             </label>
             <select
@@ -254,10 +227,7 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="category_bangla"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="category_bangla" className="block text-sm font-medium text-gray-700">
               Category (Bangla)
             </label>
             <select
