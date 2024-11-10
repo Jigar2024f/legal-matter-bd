@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { MdEdit, MdVisibility, MdDelete } from "react-icons/md"; // Import React icons
+import { toast } from "react-toastify";
 
 const GetBlog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -32,6 +33,26 @@ const GetBlog = () => {
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  
+  const handleDelete = async () => {
+    if (selectedBlog) {
+      try {
+        await axios.delete(
+          ` https://ligalmatter.vercel.app/api/v1/blog/${selectedBlog._id}`,
+          {
+            withCredentials: true,
+          }
+        );
+        setBlogs(blogs.filter((blog) => blog._id !== selectedBlog._id));
+        toast.success("Blog deleted successfully")
+        setIsDialogOpen(false);
+      } catch (error) {
+        console.error("Error deleting blog:", error);
+        toast.error("Failed to delete blog. Please try again later.")
+        setIsDialogOpen(false);
+      }
+    }
+  };
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -58,24 +79,6 @@ const GetBlog = () => {
     fetchBlogs();
   }, []);
 
-  const handleDelete = async () => {
-    if (selectedBlog) {
-      try {
-        await axios.delete(
-          ` https://ligalmatter.vercel.app/api/v1/blog/${selectedBlog._id}`,
-          {
-            withCredentials: true,
-          }
-        );
-        setBlogs(blogs.filter((blog) => blog._id !== selectedBlog._id));
-        setIsDialogOpen(false);
-      } catch (error) {
-        console.error("Error deleting blog:", error);
-        setError("Failed to delete blog. Please try again later.");
-        setIsDialogOpen(false);
-      }
-    }
-  };
 
   if (loading)
     return (
@@ -140,32 +143,32 @@ const GetBlog = () => {
                             open={isDialogOpen}
                             onOpenChange={setIsDialogOpen}
                           >
-                            <DialogTrigger>
+                            <DialogTrigger  onClick={() => setSelectedBlog(blog)}>
                               <MdDelete className="text-2xl text-red-500 hover:text-red-600 transition" />
                             </DialogTrigger>
                             <DialogContent>
-                              <DialogHeader>
-                                <DialogTitle>Confirm Deletion</DialogTitle>
-                                <DialogDescription>
-                                  Are you sure you want to delete this blog?
-                                  This action cannot be undone.
-                                </DialogDescription>
-                              </DialogHeader>
-                              <DialogFooter>
-                                <Button
-                                  variant="outline"
-                                  onClick={() => setIsDialogOpen(false)}
-                                >
-                                  Cancel
-                                </Button>
-                                <Button
-                                  onClick={handleDelete}
-                                  className="bg-red-500 text-white hover:bg-red-600"
-                                >
-                                  Confirm Delete
-                                </Button>
-                              </DialogFooter>
-                            </DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>Confirm Deletion</DialogTitle>
+                            <DialogDescription>
+                              Are you sure you want to delete this blog? This
+                              action cannot be undone.
+                            </DialogDescription>
+                          </DialogHeader>
+                          <DialogFooter>
+                            <Button
+                              variant="outline"
+                              onClick={() => setIsDialogOpen(false)}
+                            >
+                              Cancel
+                            </Button>
+                            <Button
+                              onClick={handleDelete}
+                              className="bg-red-500 text-white hover:bg-red-600"
+                            >
+                              Confirm Delete
+                            </Button>
+                          </DialogFooter>
+                        </DialogContent>
                           </Dialog>
                         </div>
                       </TableCell>
