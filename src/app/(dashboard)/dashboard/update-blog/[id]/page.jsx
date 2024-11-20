@@ -2,11 +2,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { servicesData } from "../../../../../../public/data/services";
 import QuillEditor from "../../Component/QuillEditor";
 import Image from "next/image";
+import { toast } from "@/hooks/use-toast";
 
 const EditBlog = ({ params }) => {
   const services = servicesData;
@@ -30,7 +29,7 @@ const EditBlog = ({ params }) => {
       if (id) {
         try {
           const response = await axios.get(
-            `https://ligalmatter.vercel.app/api/v1/blog/${id}`
+            `https://legalmatterbd-server.vercel.app/api/v1/blog/${id}`
           );
           if (response.data.success) {
             setFormData(response.data.data);
@@ -84,7 +83,11 @@ const EditBlog = ({ params }) => {
       return response.data.data.display_url;
     } catch (error) {
       console.error("Error uploading image:", error);
-      alert("An error occurred while uploading the image.");
+      toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: "An error occurred while uploading the image.",
+      });
       return null;
     }
   };
@@ -107,21 +110,32 @@ const EditBlog = ({ params }) => {
 
     try {
       const response = await axios.put(
-        `https://ligalmatter.vercel.app/api/v1/blog/${id}`,
+        `https://legalmatterbd-server.vercel.app/api/v1/blog/${id}`,
         updatedData,
         {
           withCredentials: true,
         }
       );
       if (response.data.success) {
-        toast.success("Blog updated successfully!");
+        toast({
+          title: "Blog updated successfully!",
+          description: "Blog has been updated successfully!",
+        });
         router.push("/dashboard/all-blog");
       } else {
-        toast.error("Failed to update blog: " + response.data.message);
+        toast({
+          variant: "destructive",
+          title: "Something went wrong",
+          description: "Failed to update blog",
+        });
       }
     } catch (error) {
       console.error("Error updating blog:", error);
-      toast.error("An error occurred while updating the blog.");
+      toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: "An error occurred while updating the blog.",
+      });
     } finally {
       setLoading(false);
     }
@@ -293,7 +307,6 @@ const EditBlog = ({ params }) => {
             {loading ? "Updating..." : "Update Blog"}
           </button>
         </form>
-        <ToastContainer />
       </div>
     </section>
   );

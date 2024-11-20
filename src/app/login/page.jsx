@@ -20,7 +20,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://ligalmatter.vercel.app/api/v1/auth/login",
+        "https://legalmatterbd-server.vercel.app/api/v1/auth/login",
         { email, password },
         { withCredentials: true },
       );

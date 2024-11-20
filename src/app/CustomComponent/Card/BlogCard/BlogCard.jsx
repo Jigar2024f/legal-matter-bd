@@ -3,7 +3,8 @@ import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 
 export default function BlogCard({ blog }) {
-  const { _id, image, description_bangla, title_bangla } = blog || {};
+  const { _id, slug, image, description_bangla, title_bangla } = blog || {};
+  console.log(blog);
 
   return (
     <div className="flex flex-col sm:flex-row lg:flex-col justify-center gap-6 noto-serif-bengali-font ">
@@ -68,7 +69,7 @@ export default function BlogCard({ blog }) {
         </p>
 
         <div>
-          <Link href={`/blogs/${_id}`}>
+          <Link href={`/blogs/${slug}`}>
             <button className="mt-4 text-xs sm:text-sm px-4 py-1 border border-primary rounded-full flex justify-center items-center gap-1 hover:bg-primary hover:text-white transition-transform duration-500 ease-in-out group">
               আরও পড়ুন{" "}
               <FaArrowRight className="text-xs transition-transform duration-300 ease-in-out -rotate-45 group-hover:rotate-0" />

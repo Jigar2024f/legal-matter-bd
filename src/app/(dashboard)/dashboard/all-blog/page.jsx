@@ -24,8 +24,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { MdEdit, MdVisibility, MdDelete } from "react-icons/md"; // Import React icons
-import { toast } from "react-toastify";
-
+import { toast } from "@/hooks/use-toast";
 const GetBlog = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,17 +37,24 @@ const GetBlog = () => {
     if (selectedBlog) {
       try {
         await axios.delete(
-          ` https://ligalmatter.vercel.app/api/v1/blog/${selectedBlog._id}`,
+          ` https://legalmatterbd-server.vercel.app/api/v1/blog/${selectedBlog._id}`,
           {
             withCredentials: true,
           }
         );
         setBlogs(blogs.filter((blog) => blog._id !== selectedBlog._id));
-        toast.success("Blog deleted successfully")
+        toast({
+          title: "Blog deleted successfully!",
+          description: "Blog has been deleted successfully!",
+        })
         setIsDialogOpen(false);
       } catch (error) {
         console.error("Error deleting blog:", error);
-        toast.error("Failed to delete blog. Please try again later.")
+        toast({
+          variant: "destructive",
+          title: "Something went wrong",
+          description: "Failed to delete blog. Please try again later",
+        })
         setIsDialogOpen(false);
       }
     }
@@ -57,7 +63,7 @@ const GetBlog = () => {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          " https://ligalmatter.vercel.app/api/v1/blog",
+          " https://legalmatterbd-server.vercel.app/api/v1/blog",
           {
             withCredentials: true,
           }
