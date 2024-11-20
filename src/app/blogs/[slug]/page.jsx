@@ -23,7 +23,7 @@ import { BlogTab } from "./BlogTab";
 import Loading from "@/app/CustomComponent/Shared/Loading";
 
 export default function Page() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [blog, setBlog] = useState(null); // State to store the selected blog
   const [blogs, setBlogs] = useState([]); // State to store the other blogs
   const [src, setSrc] = useState(""); // State to store the current URL
@@ -39,14 +39,14 @@ export default function Page() {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          " https://ligalmatter.vercel.app/api/v1/blog",
+          " https://legalmatterbd-server.vercel.app/api/v1/blog",
         ); // Replace with your API endpoint
 
         if (response.data.success) {
           const allBlogs = response.data.data;
-          const selectedBlog = allBlogs.find((b) => b._id === id); // Find the selected blog
+          const selectedBlog = allBlogs.find((b) => b.slug === slug); // Find the selected blog
           const otherBlogs = allBlogs
-            .filter((b) => b._id !== id) // Filter out the selected blog
+            .filter((b) => b.slug !== slug) // Filter out the selected blog
             .sort(() => 0.5 - Math.random()) // Shuffle the array
             .slice(0, 5); // Limit to 5 blogs
 
@@ -64,7 +64,7 @@ export default function Page() {
     };
 
     fetchBlogs(); // Fetch the blog data
-  }, [id]); // Re-fetch if the `id` parameter changes
+  }, [slug]); // Re-fetch if the `id` parameter changes
   if (loading) {
     return <Loading />;
   }

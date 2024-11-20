@@ -1,12 +1,11 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { servicesData } from "../../../../public/data/services";
 import QuillEditor from "./Component/QuillEditor";
 import Image from "next/image";
+import { toast } from "@/hooks/use-toast";
 
 const CreateBlog = () => {
   const [contentEnglish, setContentEnglish] = useState("");
@@ -52,7 +51,12 @@ const CreateBlog = () => {
       return response.data.data.display_url;
     } catch (error) {
       console.error("Error uploading image:", error);
-      alert("An error occurred while uploading the image.");
+      toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: "An error occurred while uploading the image.",
+      });
+
       return null;
     }
   };
@@ -94,7 +98,7 @@ const CreateBlog = () => {
 
     try {
       const response = await axios.post(
-        "https://ligalmatter.vercel.app/api/v1/blog",
+        "https://legalmatterbd-server.vercel.app/api/v1/blog",
         updatedFormData,
         {
           withCredentials: true,
@@ -102,7 +106,10 @@ const CreateBlog = () => {
       );
       setLoading(false);
       if (response.data.success) {
-        toast.success("Blog created successfully!");
+        toast({
+          title: "Blog created successfully!",
+          description: "Blog has been created successfully!",
+        });
         setFormData({
           title_english: "",
           title_bangla: "",
@@ -116,16 +123,28 @@ const CreateBlog = () => {
         setContentBangla("");
         router.push("/dashboard/all-blog");
       } else {
-        toast.error("Failed to create blog: " + response.data.message);
+        toast({
+          variant: "destructive",
+          title: "Something went wrong",
+          description: "Failed to create blog",
+        });
       }
     } catch (error) {
       setLoading(false);
       console.error("Error creating blog:", error);
       if (error.response?.status === 401) {
-        toast.error("You are not authorized. Please log in again.");
+        toast({
+          variant: "destructive",
+          title: "Something went wrong",
+          description: "You are not authorized. Please log in again.",
+        });
         router.push("/login");
       } else {
-        toast.error("An error occurred while creating the blog.");
+        toast({
+          variant: "destructive",
+          title: "Something went wrong",
+          description: "An error occurred while creating the blog.",
+        });
       }
     }
   };
@@ -133,10 +152,15 @@ const CreateBlog = () => {
   return (
     <section className="flex justify-center items-center bg-gray-100">
       <div className="w-full max-w-6xl p-8 bg-white text-gray-900 rounded-lg shadow-lg mx-[5%]">
-        <h2 className="text-2xl font-semibold text-center mb-6">Create a New Blog</h2>
+        <h2 className="text-2xl font-semibold text-center mb-6">
+          Create a New Blog
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="title_english" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="title_english"
+              className="block text-sm font-medium text-gray-700"
+            >
               Title (English)
             </label>
             <input
@@ -151,7 +175,10 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label htmlFor="title_bangla" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="title_bangla"
+              className="block text-sm font-medium text-gray-700"
+            >
               Title (Bangla)
             </label>
             <input
@@ -166,7 +193,10 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label htmlFor="image" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="image"
+              className="block text-sm font-medium text-gray-700"
+            >
               Upload Image
             </label>
             <input
@@ -190,16 +220,25 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label htmlFor="description_english" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="description_english"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Description (English)
             </label>
             <div className="mb-5">
-              <QuillEditor value={contentEnglish} onChange={setContentEnglish} />
+              <QuillEditor
+                value={contentEnglish}
+                onChange={setContentEnglish}
+              />
             </div>
           </div>
 
           <div>
-            <label htmlFor="description_bangla" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="description_bangla"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Description (Bangla)
             </label>
             <div className="mb-5">
@@ -208,7 +247,10 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label htmlFor="category_english" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="category_english"
+              className="block text-sm font-medium text-gray-700"
+            >
               Category (English)
             </label>
             <select
@@ -227,7 +269,10 @@ const CreateBlog = () => {
           </div>
 
           <div>
-            <label htmlFor="category_bangla" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="category_bangla"
+              className="block text-sm font-medium text-gray-700"
+            >
               Category (Bangla)
             </label>
             <select
@@ -254,7 +299,6 @@ const CreateBlog = () => {
           </button>
         </form>
       </div>
-      <ToastContainer />
     </section>
   );
 };

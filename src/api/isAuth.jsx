@@ -15,7 +15,7 @@ const isAuth = (Component) => {
       const checkAuth = async () => {
         try {
           const response = await axios.get(
-            "https://ligalmatter.vercel.app/api/v1/user/me",
+            "https://legalmatterbd-server.vercel.app/api/v1/user/me",
             {
               withCredentials: true,
             }
