@@ -10,7 +10,7 @@ export default function NotFound() {
           Uh-oh!
         </p>
 
-        <p className="mt-4 text-gray-500">We can&apos;t find that page.</p>
+        <p className="mt-4 text-gray-500">We Can&apos;t Find That Page.</p>
 
         <Link
           href="/"
