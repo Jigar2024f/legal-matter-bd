@@ -20,7 +20,7 @@ const isAuth = (Component) => {
               withCredentials: true,
             }
           );
-          setAuth(response?.data?.payload?.success);
+          setAuth(response?.data?.success);
         } catch (err) {
           setError("Not authenticated");
           setAuth(false);
