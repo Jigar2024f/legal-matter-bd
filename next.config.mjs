@@ -1,8 +1,7 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["i.ibb.co", "cdn.gobankingrates.com"],
+    domains: ["i.ibb.co", "cdn.gobankingrates.com", "th.bing.com"],
   },
   async redirects() {
     return [

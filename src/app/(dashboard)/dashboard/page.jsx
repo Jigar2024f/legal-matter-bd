@@ -50,7 +50,7 @@ const CreateBlog = () => {
       );
       return response.data.data.display_url;
     } catch (error) {
-      console.error("Error uploading image:", error);
+      console.error("Error uploading image:", error); 
       toast({
         variant: "destructive",
         title: "Something went wrong",

@@ -9,7 +9,7 @@ import { toast } from "@/hooks/use-toast";
 
 const EditBlog = ({ params }) => {
   const services = servicesData;
-  const { id } = params;
+  const { slug } = params;
   const [formData, setFormData] = useState({
     title_english: "",
     title_bangla: "",
@@ -26,10 +26,10 @@ const EditBlog = ({ params }) => {
 
   useEffect(() => {
     const fetchBlogData = async () => {
-      if (id) {
+      if (slug) {
         try {
           const response = await axios.get(
-            `https://legalmatterbd-server.vercel.app/api/v1/blog/${id}`
+            `https://legalmatterbd-server.vercel.app/api/v1/blog/${slug}`
           );
           if (response.data.success) {
             setFormData(response.data.data);
@@ -47,7 +47,7 @@ const EditBlog = ({ params }) => {
     };
 
     fetchBlogData();
-  }, [id]);
+  }, [slug]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -95,6 +95,7 @@ const EditBlog = ({ params }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    const id = formData._id
 
     let uploadedImageUrl = formData.image;
     if (typeof formData.image === "object") {
