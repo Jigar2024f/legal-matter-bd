@@ -124,10 +124,10 @@ const GetBlog = () => {
                     />
                   </TableCell>
                   <TableCell className="font-medium whitespace-nowrap">
-                    {blog.title_english.slice(0, 50)}
+                    {blog.title_english.slice(0, 25)}
                   </TableCell>
                   <TableCell className="whitespace-nowrap">
-                    {blog.title_bangla.slice(0, 50)}
+                    {blog.title_bangla.slice(0, 25)}
                   </TableCell>
                   <TableCell className="whitespace-nowrap">
                     {blog.category_english}
@@ -139,10 +139,10 @@ const GetBlog = () => {
                     <div className="flex gap-1 justify-end">
                       <TableCell className="text-right">
                         <div className="flex gap-1 justify-end">
-                          <Link href={`/dashboard/update-blog/${blog._id}`}>
+                          <Link href={`/dashboard/update-blog/${blog.slug}`}>
                             <MdEdit className="text-2xl text-blue-500" />
                           </Link>
-                          <Link href={`/blogs/${blog._id}`}>
+                          <Link href={`/blogs/${blog.slug}`}>
                             <MdVisibility className="text-2xl text-blue-500 hover:text-blue-600 transition" />
                           </Link>
                           <Dialog

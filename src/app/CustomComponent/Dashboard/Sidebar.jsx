@@ -53,7 +53,7 @@ import { usePathname, useRouter } from "next/navigation";
 const data = {
   user: {
     name: "Syed Jigar Saad Alam",
-    email: "demo@gmail.com",
+    email: "jigarsir@gmail.com",
     avatar: "/public/images/navbar/logo.png",
   },
   teams: [
