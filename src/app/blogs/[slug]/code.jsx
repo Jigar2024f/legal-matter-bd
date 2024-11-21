@@ -1,3 +1,7 @@
+"use client";
+
+import { BreadcrumbSection } from "@/app/CustomComponent/BreadcrumbSection/BreadcrumbSection";
+import { useEffect, useState } from "react";
 import {
   FaFacebook,
   FaInstagramSquare,
@@ -13,40 +17,70 @@ import {
   FitnessCarouselPrevious,
 } from "@/components/ui/carousel";
 import BlogCard from "@/app/CustomComponent/Card/BlogCard/BlogCard";
+import axios from "axios"; // Import axios for making API requests
 import { BlogTab } from "./BlogTab";
+import Loading from "@/app/CustomComponent/Shared/Loading";
 
-// Fetch data server-side
-async function fetchBlogs() {
-  const response = await fetch(
-    "https://legalmatterbd-server.vercel.app/api/v1/blog"
-  );
-  const data = await response.json();
-  return data.success ? data.data : [];
-}
-
-export default async function Page({ params }) {
+export default function Page({ params }) {
   const slug = params?.slug;
+  const [blog, setBlog] = useState(null); // State to store the selected blog
+  const [blogs, setBlogs] = useState([]); // State to store the other blogs
+  const [src, setSrc] = useState(""); // State to store the current URL
+  const [loading, setLoading] = useState(true); // State for loading state
+  const [error, setError] = useState(null); // State to handle errors
 
-  // Fetch all blogs and the specific blog based on the slug
-  const blogs = await fetchBlogs();
-  const blog = blogs.find((b) => b.slug === slug);
-  const otherBlogs = blogs
-    .filter((b) => b.slug !== slug)
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 5);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSrc(window.location.href);
+    }
 
+    // Fetch blog data from the API
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get(
+          " https://legalmatterbd-server.vercel.app/api/v1/blog"
+        ); // Replace with your API endpoint
+
+        if (response.data.success) {
+          const allBlogs = response.data.data;
+          const selectedBlog = allBlogs.find((b) => b.slug === slug); // Find the selected blog
+          const otherBlogs = allBlogs
+            .filter((b) => b.slug !== slug) // Filter out the selected blog
+            .sort(() => 0.5 - Math.random()) // Shuffle the array
+            .slice(0, 5); // Limit to 5 blogs
+
+          setBlog(selectedBlog);
+          setBlogs(otherBlogs);
+        } else {
+          setError("Failed to fetch blogs.");
+        }
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+        setError("Failed to load blogs. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs(); // Fetch the blog data
+  }, [slug]); // Re-fetch if the `id` parameter changes
+  if (loading) {
+    return <Loading />;
+  }
   if (!blog) {
     return (
       <p className="text-center mt-12 text-red-700">Blog post not found.</p>
     );
   }
 
-  const src = `https://legalmatterbd.com/blogs/${slug}`;
-
   return (
     <section className="overflow-x-hidden">
-      {/* Main Blog Content */}
-      <div className="max-w-screen-lg mx-auto px-[5%] xl:px-0 overflow-x-hidden">
+      <BreadcrumbSection
+        pageName={"Blogs"}
+        pagePath={"blogs"}
+        dynamicPage={"Details"}
+      />
+      <div className=" max-w-screen-lg mx-auto  px-[5%] xl:px-0 overflow-x-hidden">
         <BlogTab blog={blog} />
         <div className="flex items-center space-x-2 my-12 sm:my-14 lg:my-16 2xl:my-20">
           <h1 className="text-lg lg:text-xl font-medium">Share :</h1>
@@ -84,18 +118,16 @@ export default async function Page({ params }) {
           </a>
         </div>
       </div>
-
-      {/* Other Blogs Carousel */}
-      <div className="max-w-screen-xl mx-auto pb-10 sm:pb-14 lg:pb-16 2xl:pb-20 overflow-x-hidden px-[5%]">
+      <div className="max-w-screen-xl mx-auto    pb-10 sm:pb-14 lg:pb-16 2xl:pb-20 overflow-x-hidden px-[5%]">
         <Heading>
           <span className="text-secondary">More </span>Blogs
         </Heading>
         <Carousel
-          className="w-full max-w-screen-xl mx-auto mt-5 sm:mt-7 lg:mt-9 2xl:mt-12"
+          className="w-full max-w-screen-xl mx-auto mt-5  sm:mt-7 lg:mt-9 2xl:mt-12"
           aria-label="Our Blogs Carousel"
         >
           <CarouselContent role="list">
-            {otherBlogs.map((blog, index) => (
+            {blogs.map((blog, index) => (
               <CarouselItem
                 key={index}
                 role="listitem"

@@ -4,7 +4,6 @@ import Link from "next/link";
 
 export default function BlogCard({ blog }) {
   const { _id, slug, image, description_bangla, title_bangla } = blog || {};
-  console.log(blog);
 
   return (
     <div className="flex flex-col sm:flex-row lg:flex-col justify-center gap-6 noto-serif-bengali-font ">
