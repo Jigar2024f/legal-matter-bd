@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import { Inter_Tight, Noto_Serif_Bengali } from "next/font/google";
+import Script from "next/script";
 // Load the Inter Tight font
 const interTight = Inter_Tight({
   subsets: ["latin"],
@@ -86,6 +87,23 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-B0E841V8R4"
+        ></Script>
+        <Script
+          id="google-analytics"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-B0E841V8R4');
+            `,
+          }}
+        ></Script>
+      </head>
       <body
         className={`${interTight.className} ${notoSerifBengali.variable} antialiased bg-white text-primary overflow-x-hidden`}
       >
@@ -95,3 +113,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
