@@ -22,7 +22,7 @@ export default function Home() {
       </section>
 
       {/* Associate Members Section */}
-      <section>
+      <section id="associateMembers">
         <OurAssociateMembers />
       </section>
 

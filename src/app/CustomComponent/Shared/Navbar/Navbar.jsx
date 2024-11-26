@@ -60,27 +60,38 @@ export default function Navbar() {
           </div>
 
           <nav className="py-4 px-6 ubuntu-font">
-            <ul className="flex space-x-8">
-              {["Home", "About", "Services", "Blogs", "Contact"].map(
-                (item, index) => (
-                  <li key={index} className="group relative pb-2 text-xl">
-                    {item === "Blogs" ? (
-                      <Link href="/blogs">
-                        <span className="hover:text-[#000000] transition duration-300 relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-[#000000] after:transition-all after:duration-300 after:hover:w-full">
-                          {item}
-                        </span>
-                      </Link>
-                    ) : (
-                      <button
-                        onClick={() => handleNavigation(item.toLowerCase())}
-                        className="cursor-pointer hover:text-[#000000] transition duration-300 relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-[#000000] after:transition-all after:duration-300 after:group-hover:w-full"
-                      >
+            <ul className="flex space-x-5 md:space-x-[22px] lg:space-x-8">
+              {[
+                "Home",
+                "About",
+                "Associate Members",
+                "Services",
+                "Blogs",
+                "Contact",
+              ].map((item, index) => (
+                <li key={index} className="group relative pb-2 text-xl">
+                  {item === "Blogs" ? (
+                    <Link href="/blogs">
+                      <span className="hover:text-[#000000] transition duration-300 relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-[#000000] after:transition-all after:duration-300 after:hover:w-full">
                         {item}
-                      </button>
-                    )}
-                  </li>
-                ),
-              )}
+                      </span>
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={() =>
+                        handleNavigation(
+                          item === "Associate Members"
+                            ? "associateMembers"
+                            : item.toLowerCase()
+                        )
+                      }
+                      className="cursor-pointer hover:text-[#000000] transition duration-300 relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-[#000000] after:transition-all after:duration-300 after:group-hover:w-full"
+                    >
+                      {item}
+                    </button>
+                  )}
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
@@ -126,6 +137,7 @@ export default function Navbar() {
               {[
                 { name: "Home", href: "/" },
                 { name: "About", id: "about" },
+                { name: "Associate Members", id: "associateMembers" },
                 { name: "Services", id: "services" },
                 { name: "Blogs", href: "/blogs" },
                 { name: "Contact", id: "contact" },
