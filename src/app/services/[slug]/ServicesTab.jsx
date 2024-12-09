@@ -1,6 +1,5 @@
 import Description from "@/app/CustomComponent/Ui/Description/Description";
 import { IoCheckbox } from "react-icons/io5";
-import Heading from "@/app/CustomComponent/Ui/Heading/Heading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 

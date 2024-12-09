@@ -4,6 +4,7 @@ import {
   FaLinkedin,
   FaTwitter,
 } from "react-icons/fa";
+import { BlogTab } from "./BlogTab";
 import Heading from "@/app/CustomComponent/Ui/Heading/Heading";
 import {
   Carousel,
@@ -13,9 +14,8 @@ import {
   FitnessCarouselPrevious,
 } from "@/components/ui/carousel";
 import BlogCard from "@/app/CustomComponent/Card/BlogCard/BlogCard";
-import { BlogTab } from "./BlogTab";
 
-// Fetch data server-side
+// Fetch blog details and all blogs
 async function fetchBlogs() {
   const response = await fetch(
     "https://legalmatterbd-server.vercel.app/api/v1/blog"
@@ -24,6 +24,81 @@ async function fetchBlogs() {
   return data.success ? data.data : [];
 }
 
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+
+  // Fetch all blogs
+  const blogs = await fetchBlogs();
+  const blog = blogs.find((b) => b.slug === slug);
+
+  if (!blog) {
+    return {
+      title: "Blog Not Found | Legal Matter BD",
+      description: "The blog post you are looking for does not exist.",
+      robots: "noindex, nofollow",
+    };
+  }
+
+  return {
+    title: `${blog.title_bangla} | Legal Matter BD`,
+    description:
+      blog.description_bangla || "Discover insights and expert guidance on legal matters.",
+    keywords: `${blog.title_bangla}, Legal Blog, Legal Advice, Legal Matters, ${blog.category}, Legal Solutions`,
+    openGraph: {
+      title: blog.title_bangla,
+      description:
+        blog.description_bangla || "Read this informative blog post on legal matters.",
+      url: `https://legalmatterbd.com/blogs/${slug}`,
+      images: [
+        {
+          url: blog.image || "/default-blog-image.jpg", // Replace with default image if blog image is missing
+          alt: blog.title_bangla,
+          width: 1200,
+          height: 630,
+        },
+      ],
+      site_name: "Legal Matter BD",
+      type: "article",
+    },
+    twitter: {
+      title: blog.title_bangla,
+      description:
+        blog.description_bangla ||
+        "Discover insights and expert guidance on legal matters.",
+      card: "summary_large_image",
+      images: [
+        {
+          url: blog.image || "/default-blog-image.jpg",
+          alt: blog.title_bangla,
+        },
+      ],
+    },
+    robots: "index, follow",
+    canonical: `https://legalmatterbd.com/blogs/${slug}`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: blog.title_bangla,
+      description: blog.excerpt,
+      image: blog.image || "/default-blog-image.jpg",
+      author: {
+        "@type": "Person",
+        name: blog.author || "Legal Matter BD",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Legal Matter BD",
+        logo: {
+          "@type": "ImageObject",
+          url: "/images/navbar/logo.svg",
+        },
+      },
+      datePublished: blog.datePublished || new Date().toISOString(),
+    },
+  };
+}
+
+// Main Page Component
 export default async function Page({ params }) {
   const slug = params?.slug;
 

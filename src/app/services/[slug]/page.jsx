@@ -1,51 +1,61 @@
-"use client";
-
-import { useParams } from "next/navigation";
-import { ServicesTab } from "./ServicesTab";
 import { servicesData } from "../../../../public/data/services";
-import OurServicesCard from "@/app/CustomComponent/Home/OurServices/OurServicesCard";
-import { BreadcrumbSection } from "../Component/BreadcrumbSection/BreadcrumbSection";
-import InputForm from "@/app/CustomComponent/Home/Contact/InputForm";
+import ServiceDetails from "./ServiceDetails";
 
-export default function Page() {
-  const { slug } = useParams();
+// Dynamic metadata generation function
+export async function generateMetadata({ params }, parent) {
+  const { slug } = params; // Access the dynamic `slug` from params
 
-
-  // Find the correct services using the slug
   const service = servicesData.find((b) => b.slug === slug);
-  const otherServices = servicesData.filter((b) => b.slug !== slug);
+  // Access parent metadata if needed (optional)
+  const previousImages = (await parent)?.openGraph?.images || [];
 
-  const randomServices = otherServices
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 3);
+  return {
+    title: `${service?.title?.bn} | Legal Matter BD | Legal Services in Bangladesh`,
+    description: `${service?.description?.bn} Explore our services tailored for your needs. Get expert legal guidance from Legal Matter BD.`,
+    keywords: `${service?.title?.bn}, Legal Services, Legal Support, ${service?.title?.bn} Bangladesh`,
+    openGraph: {
+      title: `${service?.title?.bn} | Legal Matter BD`,
+      description: service?.description?.bn,
+      url: `https://legalmatterbd.com/services/${slug}`,
+      images: [
+        service?.image || "/default-service-image.jpg", // Default image if service doesn't have one
+        ...previousImages, // Optionally extend previous images
+      ],
+      site_name: "Legal Matter BD",
+      type: "website",
+      locale: "en_US",
+    },
+    twitter: {
+      title: `${service?.title?.bn} | Legal Matter BD`,
+      description: service?.description?.bn,
+      card: "summary_large_image",
+      images: [
+        service?.image || "/default-service-image.jpg", // Default image for Twitter card
+      ],
+    },
+    robots: "index, follow",
+    canonical: `https://legalmatterbd.com/services/${slug}`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: service?.title?.bn,
+      description: service?.description?.bn,
+      provider: {
+        "@type": "Organization",
+        name: "Legal Matter BD",
+        url: "https://legalmatterbd.com",
+        logo: "/images/navbar/logo.svg",
+      },
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "BDT",
+        price: service?.price || "Contact for Pricing",
+      },
+    },
+  };
+}
 
-  if (!service) {
-    return <p className="text-white text-center mt-12">Service not found.</p>;
-  }
-
-  return (
-    <main className="overflow-x-hidden">
-      <BreadcrumbSection dynamicPage={service?.title?.en} />
-      <ServicesTab service={service} />
-      <div className="max-w-screen-lg mx-auto px-[5%] xl:px-0">
-        <hr className="mb-10 sm:mb-12 lg:mb-14 2xl:mb-16" />
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-semibold">
-          Our Other Services
-        </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 my-6 sm:my-7 lg:my-8 2xl:my-10">
-          {randomServices?.map((service) => (
-            <OurServicesCard key={service?.id} service={service} />
-          ))}
-        </div>
-      </div>
-      <div className="mt-12 sm:mt-14 lg:mt-16 2xl:mt-20">
-        <div className="max-w-screen-lg mx-auto  px-[5%] xl:px-0">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-semibold  -mb-5 sm:-mb-7 lg:-mb-9 2xl:-mb-12">
-            Consult Now
-          </h1>
-        </div>
-        <InputForm />
-      </div>
-    </main>
-  );
+// Main page component rendering ServiceDetails
+export default function Page({ params }) {
+  return <ServiceDetails params={params} />;
 }
