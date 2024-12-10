@@ -1,19 +1,24 @@
 export default function Loading() {
   return (
     <div className="max-w-screen-lg mx-auto px-[5%] xl:px-0 py-12 space-y-8">
+      <div className="h-8 bg-gray-300 rounded w-96 mx-auto animate-pulse"></div>
       {/* Title Skeleton */}
-      <div className="h-8 bg-gray-300 rounded w-3/4 mx-auto animate-pulse"></div>
+      <div className="h-8 bg-gray-300 rounded w-3/4 animate-pulse"></div>
+      <div className="h-6 bg-gray-300 rounded w-1/4 animate-pulse"></div>
 
       {/* Image Skeleton */}
-      <div className="h-64 bg-gray-300 rounded-lg mx-auto animate-pulse"></div>
+      <div className="h-80 bg-gray-300 rounded-lg mx-auto animate-pulse"></div>
 
       {/* Content Skeleton */}
       <div className="space-y-4">
         <div className="h-6 bg-gray-300 rounded w-full animate-pulse"></div>
-        <div className="h-6 bg-gray-300 rounded w-5/6 animate-pulse"></div>
-        <div className="h-6 bg-gray-300 rounded w-4/5 animate-pulse"></div>
         <div className="h-6 bg-gray-300 rounded w-full animate-pulse"></div>
-        <div className="h-6 bg-gray-300 rounded w-3/4 animate-pulse"></div>
+        <div className="h-6 bg-gray-300 rounded w-full animate-pulse"></div>
+        <div className="h-6 bg-gray-300 rounded w-full animate-pulse"></div>
+        <div className="h-6 bg-gray-300 rounded w-full animate-pulse"></div>
+        <div className="h-6 bg-gray-300 rounded w-full animate-pulse"></div>
+        <div className="h-6 bg-gray-300 rounded w-full animate-pulse"></div>
+        <div className="h-6 bg-gray-300 rounded w-full animate-pulse"></div>
       </div>
 
       {/* Social Media Skeleton */}
