@@ -13,10 +13,9 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { BreadcrumbSection } from "../CustomComponent/BreadcrumbSection/BreadcrumbSection";
-import Loading from "../CustomComponent/Shared/Loading";
 
 export default function Page() {
-  const blogsPerPage = 10; // Show 6 blogs per page
+  const blogsPerPage = 10; // Show 10 blogs per page
   const [blogs, setBlogs] = useState([]); // State to store blog data
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true); // State for loading
@@ -27,7 +26,7 @@ export default function Page() {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          "https://legalmatterbd-server.vercel.app/api/v1/blog",
+          "https://legalmatterbd-server.vercel.app/api/v1/blog"
         ); // Replace with your API URL
         if (response.data.success) {
           setBlogs(response.data.data); // Assuming response.data.data contains blog data
@@ -43,16 +42,14 @@ export default function Page() {
 
     fetchBlogs(); // Call the fetch function
   }, []);
-if(loading){
-  return <Loading/>
-}
+
   // Calculate the total number of pages
   const totalPages = Math.ceil(blogs.length / blogsPerPage);
 
   // Get the blogs to be displayed on the current page
   const currentBlogs = blogs.slice(
     (currentPage - 1) * blogsPerPage,
-    currentPage * blogsPerPage,
+    currentPage * blogsPerPage
   );
 
   const handlePageChange = (page) => {
@@ -69,11 +66,35 @@ if(loading){
           <Heading>
             <span className="text-secondary">Our</span> Blogs
           </Heading>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-14 sm:my-16 lg:my-20 2xl:my-24 text-start">
-            {currentBlogs.map((blog) => (
-              <BlogCard key={blog.id} blog={blog} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-14 sm:my-16 lg:my-20 2xl:my-24 text-start">
+              {/* Skeleton Loader */}
+              <div className="bg-gray-200 animate-pulse rounded-lg p-5">
+                <div className="h-80 bg-gray-300 rounded mb-5"></div> {/* Blog Image Skeleton */}
+                <div className="h-5 bg-gray-300 rounded w-4/5 mb-3"></div> {/* Title Skeleton */}
+                <div className="h-3 bg-gray-300 rounded mb-2"></div> {/* Excerpt Skeleton */}
+                <div className="h-3 bg-gray-300 rounded w-2/5"></div> {/* Date Skeleton */}
+              </div>
+              <div className="bg-gray-200 animate-pulse rounded-lg p-5">
+                <div className="h-80 bg-gray-300 rounded mb-5"></div> {/* Blog Image Skeleton */}
+                <div className="h-5 bg-gray-300 rounded w-4/5 mb-3"></div> {/* Title Skeleton */}
+                <div className="h-3 bg-gray-300 rounded mb-2"></div> {/* Excerpt Skeleton */}
+                <div className="h-3 bg-gray-300 rounded w-2/5"></div> {/* Date Skeleton */}
+              </div>
+              <div className="bg-gray-200 animate-pulse rounded-lg p-5">
+                <div className="h-80 bg-gray-300 rounded mb-5"></div> {/* Blog Image Skeleton */}
+                <div className="h-5 bg-gray-300 rounded w-4/5 mb-3"></div> {/* Title Skeleton */}
+                <div className="h-3 bg-gray-300 rounded mb-2"></div> {/* Excerpt Skeleton */}
+                <div className="h-3 bg-gray-300 rounded w-2/5"></div> {/* Date Skeleton */}
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-14 sm:my-16 lg:my-20 2xl:my-24 text-start">
+              {currentBlogs.map((blog) => (
+                <BlogCard key={blog.id} blog={blog} />
+              ))}
+            </div>
+          )}
         </div>
         <Pagination>
           <PaginationContent>
