@@ -173,10 +173,34 @@ export default function Footer(params) {
           </div>
         </div>
         <div className="flex items-end justify-center sm:justify-end w-full gap-3 lg:gap-4 my-5 sm:my-0">
-          <FaFacebook className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-blue-600 p-[3px] transition duration-500 border hover:border-blue-600 cursor-pointer" />
-          <FaTwitter className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-blue-400 p-[3px] transition duration-500 border hover:border-blue-400 cursor-pointer" />
-          <FaLinkedin className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-blue-700 p-[3px] transition duration-500 border hover:border-blue-700 cursor-pointer" />
-          <FaInstagramSquare className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[3px] transition duration-500 border hover:border-yellow-500 cursor-pointer" />
+          <a
+            href="https://www.facebook.com/future.advocate.bd"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebook className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-blue-600 p-[3px] transition duration-500 border hover:border-blue-600 cursor-pointer" />
+          </a>
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTwitter className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-blue-400 p-[3px] transition duration-500 border hover:border-blue-400 cursor-pointer" />
+          </a>
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-blue-700 p-[3px] transition duration-500 border hover:border-blue-700 cursor-pointer" />
+          </a>
+          <a
+            href="https://www.instagram.com/legalmatterbd"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagramSquare className="text-3xl lg:text-4xl bg-white text-black rounded hover:text-white hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[3px] transition duration-500 border hover:border-yellow-500 cursor-pointer" />
+          </a>
         </div>
       </div>
       <hr className="max-w-screen-xl mx-auto my-4 sm:my-6 lg:my-8 2xl:my-10" />
