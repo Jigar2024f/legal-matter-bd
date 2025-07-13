@@ -37,7 +37,7 @@ const InputForm = () => {
     emailjs
       .send(
         "service_2d5r8tc", // Replace with your EmailJS service ID
-        "template_wfsfmfe", // Replace with your EmailJS template ID
+        "template_egjyjgl", // Replace with your EmailJS template ID
         emailParams,
         "17t-dE5VI-FC-Fspc", // Replace with your EmailJS public key
       )
