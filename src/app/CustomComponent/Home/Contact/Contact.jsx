@@ -50,10 +50,10 @@ export default function Contact() {
           <h2 className="text-lg font-semibold text-primary">Office Address</h2>
           <div className="h-[2px] w-full bg-mediumGray my-2" />
           <address className="not-italic">
-            <p>Migration Abroad,</p>
-            <p>4th Floor (Lift-3),</p>
-            <p>West World Shopping City,</p>
-            <p>Jindabazar, Sylhet, Bangladesh</p>
+            <p>Migration Hub BD,</p>
+            <p>7th floor (Lift-6),</p>
+            <p>West World Shopping City, Jindabazar,  Sylhet, Bangladesh</p>
+           
           </address>
         </article>
 
