@@ -40,9 +40,9 @@ export default function Contact() {
           </h2>
           <div className="h-[2px] w-full bg-mediumGray my-2" />
           <address className="not-italic">
-            <p>Bar Hall No 03,</p>
-            <p>1st floor Hall Room,</p>
-            <p>Judge&#39;s Court, Sylhet</p>
+            <p>5/A, </p>
+            <p>Hatim Bag (Beside Scholars Home School),</p>
+            <p>Shibganj, Sylhet</p>
           </address>
         </article>
         {/* Office Address */}
